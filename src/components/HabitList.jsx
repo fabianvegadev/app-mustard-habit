@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { HabitItem } from "./HabitItem";
 
 function HabitList ({defaultHabits}) {
