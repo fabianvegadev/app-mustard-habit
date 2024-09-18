@@ -1,13 +1,19 @@
+/* eslint-disable react/prop-types */
 import '../styles/HabitItem.css'
+import { FiCheck , FiSettings } from "react-icons/fi";
 
-// eslint-disable-next-line react/prop-types
-function HabitItem ({text}) {
+function HabitItem (props) {
 
     return (
-        <li className='habitItem'>
-            <button>V</button>
-            <p>{text}</p>               
-            <button>set</button>
+        <li className= {`habitItem ${props.completed && 'habitItem--completed'}`}>
+            <button 
+                className= {`buttonCheck ${!props.completed && 'buttonCheck--incomplete'}`}
+                onClick={props.onCompleteHabit}
+            >
+                <FiCheck/>
+            </button>
+            <p>{props.text}</p>               
+            <button className='buttonSettings'><FiSettings/></button>
         </li>
     )           
 };

@@ -1,16 +1,59 @@
 .habitItem {
-    background-color: #F2F4F5;
+    background-color: white;
     height: 48px;
+    border-radius: 16px;
+    border-style: solid;
+    border-color: gray;
+    border-width: thin;
+    margin-top: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 24px;
 
 }
 
+.habitItem--completed {
+    background-color: #EEC94C;
+    transition: background-color 1.5s;
+}
+
 .habitItem > p {
-    margin: 0;
+    margin-left: 16px;
     width: calc(100% - 100px);
     font-size: 18px;
     text-align: justify;
+}
+
+.buttonCheck {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    border-width: 1.5px;
+    display: flex;
+    align-items: center;
+}
+
+.buttonCheck--incomplete:hover {
+    color: #EEC94C;
+    border-color: #EEC94C;
+    transition: border-color 1.5s;
+}
+
+.buttonSettings {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.buttonSettings:hover {
+    transform: rotate(250deg);
+    transition: transform 1.5s;
 }
