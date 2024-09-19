@@ -5,7 +5,7 @@
     border-style: solid;
     border-color: gray;
     border-width: thin;
-    margin-top: 24px;
+    margin: 24px 24px 0px 24px; 
     display: flex;
     justify-content: center;
     align-items: center;

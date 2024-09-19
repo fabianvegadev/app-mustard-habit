@@ -1,0 +1,7 @@
+.NavBar {
+    background-color: aqua;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;    
+  }

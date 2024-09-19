@@ -4,6 +4,10 @@ import { FiCheck , FiSettings } from "react-icons/fi";
 
 function HabitItem (props) {
 
+
+
+
+    
     return (
         <li className= {`habitItem ${props.completed && 'habitItem--completed'}`}>
             <button 
@@ -13,7 +17,7 @@ function HabitItem (props) {
                 <FiCheck/>
             </button>
             <p>{props.text}</p>               
-            <button className='buttonSettings'><FiSettings/></button>
+            <button className='buttonSettings'><FiSettings/></button>            
         </li>
     )           
 };
