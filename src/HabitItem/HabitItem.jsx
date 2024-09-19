@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import '../styles/HabitItem.css'
+import './HabitItem.css';
 import { FiCheck , FiSettings } from "react-icons/fi";
 
 function HabitItem (props) {

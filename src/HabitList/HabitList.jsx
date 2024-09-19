@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import '../styles/HabitList.css';
-import { HabitItem } from "./HabitItem";
+import './HabitList.css';
+import { HabitItem } from "../HabitItem/HabitItem";
 import { useState } from 'react';
 
 // const defaultHabits = [

@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CreateHabitForm } from './components/CreateHabitForm';
-import { HabitList } from './components/HabitList'
+import { CreateHabitForm } from '../CreateHabitForm/CreateHabitForm';
+import { HabitList } from '../HabitList/HabitList'
 import { useState } from 'react';
-import { Modal } from './components/Modal';
-import { CreateHabitButton } from './components/CreateHabitButton';
-import { NavBar } from './components/NavBar';
+import { Modal } from '../Modal/Modal';
+import { CreateHabitButton } from '../CreateHabitButton/CreateHabitButton';
+import { NavBar } from '../NavBar/NavBar';
 import './App.css'
 
 

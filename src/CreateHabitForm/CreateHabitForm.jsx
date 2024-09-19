@@ -1,4 +1,4 @@
-import '../styles/CreateHabitForm.css';
+import './CreateHabitForm.css';
 import { useState } from 'react';
 
 function CreateHabitForm () {

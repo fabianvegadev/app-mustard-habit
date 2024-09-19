@@ -1,4 +1,4 @@
-import '../styles/CreateHabitButton.css'
+import './CreateHabitButton.css';
 
 function CreateHabitButton ({setOpenModal}) {
     return (
