@@ -41,7 +41,6 @@ function useLocalStorage (itemName, initianValue) {
 
 }
 
-
 function HabitList () {
 
     const [habits, saveHabit] = useLocalStorage('Habits_v1', []);    
@@ -52,6 +51,16 @@ function HabitList () {
             (habit) => habit.text == text
         );
         newHabits[habitIndex].completed = true;
+        newHabits.sort( (i) => i.completed ? 1 : -1) 
+        saveHabit(newHabits);
+    }
+
+    const onDeleteHabit = (text) => {
+        const newHabits = [...habits];
+        const habitIndex = newHabits.findIndex(
+            (habit) => habit.text == text
+        );
+        newHabits.splice(habitIndex, 1);
         saveHabit(newHabits);
     }
 
@@ -64,6 +73,7 @@ function HabitList () {
                 streak={habit.streak} 
                 completed={habit.completed}
                 onCompleteHabit={() => onCompleteHabit(habit.text)}
+                onDeleteHabit={() => onDeleteHabit(habit.text)}
             />
             )}
         </ul>
