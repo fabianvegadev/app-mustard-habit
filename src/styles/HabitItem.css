@@ -14,7 +14,7 @@
 
 .habitItem--completed {
     background-color: #EEC94C;
-    transition: background-color 1.5s;
+    transition: background-color 1s;
 }
 
 .habitItem > p {
@@ -39,7 +39,7 @@
 .buttonCheck--incomplete:hover {
     color: #EEC94C;
     border-color: #EEC94C;
-    transition: border-color 1.5s;
+    transition: border-color 1s;
 }
 
 .buttonSettings {
@@ -54,6 +54,6 @@
 }
 
 .buttonSettings:hover {
-    transform: rotate(250deg);
-    transition: transform 1.5s;
+    transform: rotate(120deg);
+    transition: transform 0.7s;
 }
