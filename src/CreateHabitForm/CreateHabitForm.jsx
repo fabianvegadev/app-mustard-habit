@@ -1,31 +1,45 @@
 import './CreateHabitForm.css';
-import { useState } from 'react';
 
-function CreateHabitForm () {
+function CreateHabitForm ({setOpenModal, onAddHabit, newHabitValue, setNewHabitValue}) {
+    
+    const onSubmit = (e) => {
+        e.preventDefault();
+        onAddHabit(newHabitValue);   
+        setNewHabitValue('')     
+        setOpenModal(false);
+    }   
 
-    const [createValue, setCreateValue] = useState('');
+    const onCancel = () => {
+        setOpenModal(false);
+    }
 
-    console.log(createValue)
+    const onChange = (e) => {
+        setNewHabitValue (e.target.value)
+    }
 
     return (
-            <form>
+            <form onSubmit={onSubmit}>
+
                 <label>Escribe tu nuevo hábito</label>
+
                 <textarea 
                     placeholder="Correr 30 minutos antes de empezar el día"
-                    value={createValue}
-                    onChange={ (e) => setCreateValue (e.target.value)}
+                    value={newHabitValue}
+                    onChange={onChange}
                 />
+
                 <div className="HabitForm-buttonContainer">
+
                     <button 
-                        type=''
-                        className="HabitForm-button HabitForm-button--cancel">
-                        Cancelar
-                    </button >
+                        type='button'
+                        className="HabitForm-button HabitForm-button--cancel"
+                        onClick={onCancel}
+                    >Cancelar</button >     
+
                     <button 
-                    type='submit'
-                        className="HabitForm-button HabitForm-button--add">
-                        Añadir
-                    </button>
+                        type='submit'
+                        className="HabitForm-button HabitForm-button--add"
+                    >Añadir</button>
                 </div>
             </form>
     )

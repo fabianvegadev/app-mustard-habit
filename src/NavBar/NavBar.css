@@ -3,5 +3,43 @@
     margin-bottom: 16px;
     border-radius: 16px;
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;   
+    justify-content: space-around;
+  }
+
+  .LogoContainer, .GraficsContainer, .MenuContainer, .UserContainer{
+    border-radius: 50%;
+    height: 52px;
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    margin: 8px;
+  }
+
+  .Logo, .GraficsIcon, .MenuIcon, .UserIcon{
+    max-height: 40px;
+    max-width: 40px;
+    border-radius: 50%;
+    
+  }
+
+  
+  .GraficsIcon{
+    height: 40px;
+    width: 40px;
+  }
+
+  
+
+  .MenuIcon{
+    height: 40px;
+    width: 40px;
+  }
+
+  
+
+  .UserIcon{
+    height: 40px;
+    width: 40px;
   }

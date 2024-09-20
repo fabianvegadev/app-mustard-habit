@@ -1,27 +1,28 @@
-import './NavBar.css'
+import './NavBar.css';
+import { FiMoreVertical } from "react-icons/fi";
+import { FiBarChart } from "react-icons/fi";
+import { FiUser } from "react-icons/fi";
+import Logo from "./LogoMustardHabit.png";
 
 function NavBar () {
 
     return (
-        <nav className='NavBar'>
-            <div>
+        <nav className='NavBar'>            
+                <div className='LogoContainer'>
+                    <img src={Logo} alt='Logo' className='Logo'/>                        
+                </div>
 
-            </div>
+                <div className='GraficsContainer'>
+                    <FiBarChart className='GraficsIcon'/>
+                </div>
 
-            <div>
-                <ul>
-                    <li>
-                        asdf
-                    </li>
-                    <li>
-                        hjety
-                    </li>
-                </ul>
-            </div>
+                <div className='MenuContainer'>
+                    <FiMoreVertical className='MenuIcon'/>
+                </div>
 
-            <div>
-
-            </div>
+                <div className='UserContainer'>
+                    <FiUser className='UserIcon'/>
+                </div>
         </nav>
     )
 }

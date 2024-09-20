@@ -17,58 +17,15 @@ import { useState } from 'react';
 // localStorage.setItem('Habits_v1', JSON.stringify(defaultHabits));
 // localStorage.removeItem('Habits_V1')
 
-function useLocalStorage (itemName, initianValue) {
-    
-    const localStorageItem = localStorage.getItem(itemName)
-    
-    let parsedItem;
-    
-    if (localStorageItem) {
-        parsedItem = JSON.parse(localStorageItem);  
-    } else {
-        localStorage.setItem(itemName, JSON.stringify(initianValue))
-        parsedItem = initianValue;
-    }   
 
-    const [item, setItem] = useState(parsedItem);
-    
-    const saveItem = (newItem) => {
-        localStorage.setItem(itemName, JSON.stringify(newItem))
-        setItem(newItem)
-    }
 
-    return [item, saveItem]
-
-}
-
-function HabitList () {
-
-    const [habits, saveHabit] = useLocalStorage('Habits_v1', []);    
-
-    const onCompleteHabit = (text) => {
-        const newHabits = [...habits];
-        const habitIndex = newHabits.findIndex(
-            (habit) => habit.text == text
-        );
-        newHabits[habitIndex].completed = true;
-        newHabits.sort( (i) => i.completed ? 1 : -1) 
-        saveHabit(newHabits);
-    }
-
-    const onDeleteHabit = (text) => {
-        const newHabits = [...habits];
-        const habitIndex = newHabits.findIndex(
-            (habit) => habit.text == text
-        );
-        newHabits.splice(habitIndex, 1);
-        saveHabit(newHabits);
-    }
+function HabitList ({habits, onCompleteHabit, onDeleteHabit}) {
 
     return (
         <ul className="HabitList">
             {habits.map((habit) => 
             <HabitItem 
-                key={habit.text} 
+                key={habit.key} 
                 text={habit.text} 
                 streak={habit.streak} 
                 completed={habit.completed}
