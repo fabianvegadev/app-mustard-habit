@@ -89,6 +89,9 @@ const onDeleteHabit = (text) => {
       </div>        
 
       <div className='Navigation'>
+
+        {habits.length === 0 && <EmptyHabits openModal={openModal}/>}
+        
         {habits.length != 0 && (
           <HabitList
           habits={habits} 
@@ -97,7 +100,6 @@ const onDeleteHabit = (text) => {
         />
         )}
         
-        {habits.length === 0 && <EmptyHabits openModal={openModal}/>}
               
               
 
