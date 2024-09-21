@@ -1,6 +1,6 @@
-import DateBar  from './components/DateBar'; 
-import CreateHabitButton  from './components/CreateHabitButton'; 
-import { HabitList }  from './components/HabitList';
+import DateBar  from './DateBar'; 
+import CreateHabitButton  from '../components/CreateHabitButton'; 
+import { HabitList }  from '../components/HabitList';
 import './App.css';
 
 const defaultHabits = [
