@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { FiArrowRight } from "react-icons/fi";
-import { FiArrowLeft } from "react-icons/fi";
 import './DateBar.css'; 
 
 const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
@@ -51,7 +49,7 @@ const DateBar = () => {
   return (
     <div className="date-bar-container">
       <button onClick={handlePreviousWeek} className="date-bar-button">
-        <i className="bi bi-arrow-left-circle-fill"><FiArrowLeft /></i>
+        <i className="bi bi-arrow-left-circle-fill"></i>
       </button>
 
       {daysWithDates.map((item, index) => (
@@ -59,13 +57,13 @@ const DateBar = () => {
           key={index} 
           className={`date-bar-day ${item.dayNumber === selectedDay ? 'selected' : ''}`}
         >
-          <div>{item.name}</div>
-          <div>{item.dayNumber}</div>
+          <div className='text-date'>{item.name}</div>
+          <div className='text-date'>{item.dayNumber}</div>
         </div>
       ))}
 
       <button onClick={handleNextWeek} className="date-bar-button">
-        <i className="bi bi-arrow-right-circle-fill"><FiArrowRight /></i>
+        <i className="bi bi-arrow-right-circle-fill"></i>
       </button>
     </div>
   );

@@ -86,12 +86,14 @@ const onDeleteHabit = (text) => {
     <BrowserRouter>
       <div>
         <NavBar/> 
-      </div>        
+      </div>  
+
+
 
       <div className='Navigation'>
+        
 
-        <DateBar/> 
-
+        <DateBar/>  
 
         {habits.length === 0 && <EmptyHabits openModal={openModal}/>}
         
@@ -119,8 +121,11 @@ const onDeleteHabit = (text) => {
           </Modal>  
         )}
       </div>
+      
+
       <h2>Calendario de Tareas Completadas</h2>
       <HabitCalendar />
+
       
     </BrowserRouter>
   )
