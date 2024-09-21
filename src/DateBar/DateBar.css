@@ -1,0 +1,59 @@
+/* DateBar.css */
+
+.date-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+
+}
+
+    .date-bar-day {
+        display: flex;
+        flex-direction: column; /* Cambia a columna */
+        align-items: center; /* Centra el contenido */
+        justify-content: space-between;
+        max-width: 40px; /* Ajusta el tamaño del círculo */
+        max-height: 40px; /* Ajusta el tamaño del círculo */
+        padding: 10px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+        margin: 5px; /* Espacio entre círculos */
+        text-align: center;
+        min-width: 60px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold; /* Aplica negrita a los nombres de los días */
+
+    }
+
+    .date-bar-day:hover {
+      background-color: #d0d0d0;
+      
+    }
+
+    .date-bar-button:hover {
+        background-color: #d5b143; /* Cambio de color al pasar el ratón */
+      }
+
+      .date-bar-button {
+        background-color: transparent; /* Fondo transparente para que resalten los iconos */
+        border: none;
+        color: rgb(177, 175, 175); /* Color del icono */
+        font-size: 30px; /* Tamaño del icono */
+        cursor: pointer;
+      }
+      
+      .date-bar-button:hover {
+        color: #d5b143; /* Cambio de color al pasar el ratón */
+      }
+
+   
+      .date-bar-day.selected {
+        background-color: rgb(177, 175, 175); /* Color de fondo para el día seleccionado */
+        color: white; /* Color del texto */
+        font-weight: bold;
+      }
