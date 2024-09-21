@@ -1,11 +1,12 @@
 .habitItem {
-    background-color: white;
+    background-color: #ecebc8;
     height: 48px;
     border-radius: 16px;
     border-style: solid;
-    border-color: gray;
     border-width: thin;
+    border-color: #F6E96B;
     margin: 24px 24px 0px 24px; 
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +14,7 @@
 }
 
 .habitItem--completed {
-    background-color: #EEC94C;
+    background: linear-gradient(90deg,#ecebc8,#A2CA71,#41B06E);
     transition: background-color 1s;
 }
 
@@ -29,16 +30,17 @@
     font-weight: bold;
     font-size: 20px;
     border-radius: 50%;
+    border-color: #F6E96B;
+    cursor: pointer;
     height: 32px;
     width: 32px;
-    border-width: 1.5px;
     display: flex;
     align-items: center;
 }
 
 .buttonCheck--incomplete:hover {
-    color: #EEC94C;
-    border-color: #EEC94C;
+    color: #387F39;
+    border-color: #387F39;
     transition: border-color 1s;
 }
 
@@ -49,11 +51,17 @@
     border: none;
     height: 32px;
     width: 32px;
+    cursor: pointer;
     display: flex;
     align-items: center;
+}
+
+.buttonSettings--complete {
+    color: black;
 }
 
 .buttonSettings:hover {
     transform: rotate(120deg);
     transition: transform 0.7s;
 }
+

@@ -2,12 +2,8 @@
 import './HabitItem.css';
 import { FiCheck , FiSettings } from "react-icons/fi";
 
-function HabitItem (props) {
+function HabitItem (props) {    
 
-
-
-
-    
     return (
         <li className= {`habitItem ${props.completed && 'habitItem--completed'}`}>
             
@@ -17,13 +13,15 @@ function HabitItem (props) {
             ><FiCheck/>
             </button>
 
-            <p>{props.text}</p>    
+            <p onClick={props.onCompleteHabit}>{props.text}</p>    
+
+            <div id='ModalSettings'></div>
 
             <button             
-                className='buttonSettings' 
-                onClick={props.onDeleteHabit}
-            ><FiSettings/></button>     
-
+                className={`buttonSettings ${props.completed && 'buttonSettings--complete'}`}
+                onClick={(props.onDeleteHabit)}
+            ><FiSettings/></button>   
+            
         </li>
     )           
 };

@@ -1,6 +1,5 @@
 :root {
-  font-family: system-ui;
-  
+  font-family: system-ui;  
 }
 
 body {
@@ -14,6 +13,6 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    background-color: #F2F4F5;
+    background-color: #ecebc8;
   }
 }

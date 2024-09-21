@@ -1,17 +1,18 @@
 import './OptionsSettings.css'
 
 function OptionsSettings () {
+
     return (
-        <div>
+        <div className='OptionsSettings'>
             <button>
                 Editar
             </button>
 
             <button>
-                Eliminar
+                Borrar
             </button>
         </div>
-    )
+    )    
 }
 
-export {OptionsSettings}
+export {OptionsSettings};

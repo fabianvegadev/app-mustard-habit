@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import './HabitList.css';
 import { HabitItem } from "../HabitItem/HabitItem";
-import { useState } from 'react';
-
 // const defaultHabits = [
 //   {text: 'Caminar', streak: "5 días consecutivos", completed: false},
 //   {text: 'Madrugar', streak: "7 días consecutivos", completed: false},
@@ -19,20 +17,23 @@ import { useState } from 'react';
 
 
 
-function HabitList ({habits, onCompleteHabit, onDeleteHabit}) {
+function HabitList (props) {
+    
 
     return (
         <ul className="HabitList">
-            {habits.map((habit) => 
+
+            {props.habits.map((habit) => 
             <HabitItem 
                 key={habit.key} 
                 text={habit.text} 
                 streak={habit.streak} 
                 completed={habit.completed}
-                onCompleteHabit={() => onCompleteHabit(habit.text)}
-                onDeleteHabit={() => onDeleteHabit(habit.text)}
-            />
+                onCompleteHabit={() => props.onCompleteHabit(habit.text)}
+                onDeleteHabit={() => props.onDeleteHabit(habit.text)}
+            ></HabitItem>
             )}
+            
         </ul>
         
     )

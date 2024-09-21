@@ -40,12 +40,11 @@ function App() {
   
   const [newHabitValue, setNewHabitValue] = useState('');
 
-
   const onAddHabit = (text) => {
     var idHabit = Math.random()
     const newHabits = [...habits];  
     const habitText = text[0].toUpperCase() + text.substring(1);
-    newHabits.push({
+    newHabits.unshift({
         key: idHabit,
         text: habitText,
         streak: 0,
@@ -69,8 +68,6 @@ const onCompleteHabit = (text) => {
   console.log (habits.length)
 
 }
-
-
 
 const onDeleteHabit = (text) => {
   const newHabits = [...habits];
@@ -96,18 +93,15 @@ const onDeleteHabit = (text) => {
           <HabitList
           habits={habits} 
           onCompleteHabit={onCompleteHabit}
-          onDeleteHabit={onDeleteHabit}                             
+          onDeleteHabit={onDeleteHabit}
         />
         )}
-        
-              
-              
 
         <CreateHabitButton 
           setOpenModal={setOpenModal}
           onAddHabit={(e) => onAddHabit(e.target.value)}
         />
-
+        
         {openModal && (
           <Modal>
             <CreateHabitForm 

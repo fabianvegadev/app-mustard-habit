@@ -8,7 +8,6 @@ function Modal ({children}) {
         </div>,
         document.getElementById('modal')
     )
-
 }
 
 export { Modal };
