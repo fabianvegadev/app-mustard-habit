@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 0;
+  border-radius: 16px;
+  background-color: #ecebc8;
+}
+
+body {
+  background-color: #ecebc8;
+}
+
+.Navigation {
+  background-color: #FFFBE6;
+  box-shadow: 0px 4px 20px #A5A5A5;
+  border-style: solid;
+  border-width: thin;
+  border-color: #F6E96B;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+}

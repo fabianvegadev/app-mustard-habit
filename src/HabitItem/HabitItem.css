@@ -1,0 +1,69 @@
+.habitItem {
+    background-color: #ecebc8;
+    height: 48px;
+    border-radius: 16px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #F6E96B;
+    margin: 24px 24px 0px 24px; 
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.habitItem--completed {
+    background: linear-gradient(90deg,#ecebc8,#A2CA71,#41B06E);
+    transition: background-color 1s;
+}
+
+#textHabit {
+    margin: 16px 0 16px 32px;
+    width: calc(100% - 124px);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+}
+
+.buttonCheck {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 50%;
+    border-color: #F6E96B;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.buttonCheck--incomplete:hover {
+    color: #387F39;
+    border-color: #387F39;
+    transition: border-color 1s;
+}
+
+.buttonSettings {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.buttonSettings--complete {
+    color: black;
+}
+
+.buttonSettings:hover {
+    transform: rotate(120deg);
+    transition: transform 0.7s;
+}
+
