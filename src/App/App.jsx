@@ -101,7 +101,7 @@ const onDeleteHabit = (text) => {
           setOpenModal={setOpenModal}
           onAddHabit={(e) => onAddHabit(e.target.value)}
         />
-        
+
         {openModal && (
           <Modal>
             <CreateHabitForm 

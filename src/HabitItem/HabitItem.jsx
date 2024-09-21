@@ -13,7 +13,7 @@ function HabitItem (props) {
             ><FiCheck/>
             </button>
 
-            <p onClick={props.onCompleteHabit}>{props.text}</p>    
+            <p id='textHabit' onClick={props.onCompleteHabit}>{props.text}</p>    
 
             <div id='ModalSettings'></div>
 
@@ -21,7 +21,7 @@ function HabitItem (props) {
                 className={`buttonSettings ${props.completed && 'buttonSettings--complete'}`}
                 onClick={(props.onDeleteHabit)}
             ><FiSettings/></button>   
-            
+
         </li>
     )           
 };
