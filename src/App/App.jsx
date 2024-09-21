@@ -7,6 +7,7 @@ import { Modal } from '../Modal/Modal';
 import { CreateHabitButton } from '../CreateHabitButton/CreateHabitButton';
 import { NavBar } from '../NavBar/NavBar';
 import { EmptyHabits } from '../EmptyHabits/EmptyHabits';
+import { HabitCalendar } from '../HabitCalendar/HabitCalendar';
 
 import './App.css'
 
@@ -118,6 +119,8 @@ const onDeleteHabit = (text) => {
           </Modal>  
         )}
       </div>
+      <h2>Calendario de Tareas Completadas</h2>
+      <HabitCalendar />
       
     </BrowserRouter>
   )
