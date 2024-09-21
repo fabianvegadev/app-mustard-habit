@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { DateBar } from '../DateBar/DateBar'
 import { CreateHabitForm } from '../CreateHabitForm/CreateHabitForm';
 import { HabitList } from '../HabitList/HabitList'
 import { useState } from 'react';
@@ -6,6 +7,7 @@ import { Modal } from '../Modal/Modal';
 import { CreateHabitButton } from '../CreateHabitButton/CreateHabitButton';
 import { NavBar } from '../NavBar/NavBar';
 import { EmptyHabits } from '../EmptyHabits/EmptyHabits';
+
 import './App.css'
 
 function useLocalStorage (itemName, initianValue) {
@@ -86,6 +88,9 @@ const onDeleteHabit = (text) => {
       </div>        
 
       <div className='Navigation'>
+
+        <DateBar/> 
+
 
         {habits.length === 0 && <EmptyHabits openModal={openModal}/>}
         
