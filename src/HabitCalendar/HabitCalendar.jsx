@@ -33,6 +33,8 @@ const HabitCalendar = () => {
   return (
     <div style={{ textAlign: 'center', marginTop: '5px' }}>
 
+      <h2>Calendario de Tareas Completadas</h2>
+
       {/* Contenedor del calendario */} 
       <div> 
         <Calendar

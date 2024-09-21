@@ -1,13 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { DateBar } from '../DateBar/DateBar'
-import { CreateHabitForm } from '../CreateHabitForm/CreateHabitForm';
-import { HabitList } from '../HabitList/HabitList'
 import { useState } from 'react';
-import { Modal } from '../Modal/Modal';
-import { CreateHabitButton } from '../CreateHabitButton/CreateHabitButton';
 import { NavBar } from '../NavBar/NavBar';
-import { EmptyHabits } from '../EmptyHabits/EmptyHabits';
 import { HabitCalendar } from '../HabitCalendar/HabitCalendar';
+import { HomePage } from '../HomePage/HomePage';
 
 import './App.css'
 
@@ -69,7 +64,6 @@ const onCompleteHabit = (text) => {
   newHabits.sort( (i) => i.completed ? 1 : -1) 
   saveHabit(newHabits);
   console.log (habits.length)
-
 }
 
 const onDeleteHabit = (text) => {
@@ -81,52 +75,32 @@ const onDeleteHabit = (text) => {
   saveHabit(newHabits);
 }
 
-
   return (
     <BrowserRouter>
       <div>
         <NavBar/> 
-      </div>  
+      </div> 
 
+      <Routes>
 
-
-      <div className='Navigation'>
-        
-
-        <DateBar/>  
-
-        {habits.length === 0 && <EmptyHabits openModal={openModal}/>}
-        
-        {habits.length != 0 && (
-          <HabitList
-          habits={habits} 
+        <Route path='/' element={
+          <HomePage 
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          newHabitValue={newHabitValue}
+          setNewHabitValue={setNewHabitValue}
+          habits={habits}
+          onAddHabit={onAddHabit}
           onCompleteHabit={onCompleteHabit}
           onDeleteHabit={onDeleteHabit}
-        />
-        )}
+        />}/>
 
-        <CreateHabitButton 
-          setOpenModal={setOpenModal}
-          onAddHabit={(e) => onAddHabit(e.target.value)}
-        />
+        <Route path='/calendar' element={
+          <HabitCalendar 
+        />}/>        
 
-        {openModal && (
-          <Modal>
-            <CreateHabitForm 
-              setOpenModal={setOpenModal}
-              onAddHabit={onAddHabit}
-              newHabitValue={newHabitValue}
-              setNewHabitValue={setNewHabitValue}
-            />
-          </Modal>  
-        )}
-      </div>
-      
+      </Routes>
 
-      <h2>Calendario de Tareas Completadas</h2>
-      <HabitCalendar />
-
-      
     </BrowserRouter>
   )
 }
