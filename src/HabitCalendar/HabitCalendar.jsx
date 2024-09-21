@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // Importa el estilo predeterminado de react-calendar
-import '../styles/HabitCalendar.css';
+import './HabitCalendar.css';
 
 const HabitCalendar = () => {
   const [selectedDate, setSelectedDate] = useState([]); // Fecha seleccionada en el calendario
@@ -90,4 +90,4 @@ const HabitCalendar = () => {
   );
 };
 
-export default HabitCalendar;
+export { HabitCalendar } ;
