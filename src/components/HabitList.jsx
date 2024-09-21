@@ -26,8 +26,10 @@ function HabitList ({defaultHabits}) {
                 streak={habit.streak} 
                 completed={habit.completed}
                 onCompleteHabit={() => onCompleteHabit(habit.text)}
+           
             />
             )}
+     
         </ul>
         
     )
