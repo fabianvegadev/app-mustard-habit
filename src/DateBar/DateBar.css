@@ -34,7 +34,7 @@
 .date-bar-button {
   background-color: transparent; /* Fondo transparente para que resalten los iconos */
   border: none;
-  color: white;
+  color: black;
   font-size: 30px; /* Tamaño del icono */
   cursor: pointer;display: flex;
   align-items: center;
