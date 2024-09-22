@@ -100,6 +100,7 @@ const onDeleteHabit = (text) => {
 
         </Routes>
       </div>
+        
     </BrowserRouter>
   )
 }

@@ -1,8 +1,8 @@
 .react-calendar {
-    margin: 0 auto;
+    margin: 0;
     width: 100%;
-    max-width: 300px;
-    font-size: 16px;
+    max-width: 560px;
+    font-size: 32px;
 }
 
 .react-calendar button {
@@ -13,7 +13,11 @@
 .react-calendar__month-view,
 .react-calendar__month-view div,
 .react-calendar__viewContainer {
-    width: 300px;
+    width: 560px;
+}
+
+.react-calendar-navigation-label {
+    font-size: 32px;
 }
 
 .completado{
