@@ -3,24 +3,24 @@ import { FiMoreVertical } from "react-icons/fi";
 import { FiBarChart } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import Logo from "./LogoMustardHabit.png";
+import { useNavigate } from 'react-router-dom';
 
 function NavBar () {
 
+    const navigate = useNavigate();
+
     return (
         <nav className='NavBar'>            
-                <div className='LogoContainer'>
-                    <img src={Logo} alt='Logo' className='Logo'/>                        
+                <div className='LogoContainer' onClick={() => navigate('/')}>
+                    <img src={Logo} alt='Logo' className='Logo'/>
+                    <p>MustardHabit</p>                      
                 </div>
 
                 <div className='GraficsContainer'>
-                    <FiBarChart className='GraficsIcon'/>
-                </div>
+                    <FiBarChart className='GraficsIcon' onClick={ () => navigate('/calendar') }/>
 
-                <div className='MenuContainer'>
                     <FiMoreVertical className='MenuIcon'/>
-                </div>
 
-                <div className='UserContainer'>
                     <FiUser className='UserIcon'/>
                 </div>
         </nav>

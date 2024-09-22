@@ -1,14 +1,9 @@
 /* DateBar.css */
 .date-bar-container {
-  background-color: #FFFBE6;
-  box-shadow: 0px 2px 12px #A5A5A5;
-  border-style: solid;
-  border-width: thin;
-  border-color: #F6E96B;
-  margin-bottom: 16px;
-  border-radius: 16px;
+  background-color: transparent;
   display: flex;
   justify-content: space-evenly;
+  padding: 16px 8px 8px 8px;
 }
 
 .date-bar-day {
@@ -39,9 +34,10 @@
 .date-bar-button {
   background-color: transparent; /* Fondo transparente para que resalten los iconos */
   border: none;
-  color: rgb(177, 175, 175); /* Color del icono */
+  color: white;
   font-size: 30px; /* Tamaño del icono */
-  cursor: pointer;
+  cursor: pointer;display: flex;
+  align-items: center;
 }
       
 .date-bar-button:hover {

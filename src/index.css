@@ -1,18 +1,8 @@
 :root {
-  font-family: system-ui;  
-}
-
-body {
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-#root {
-  width: 680px;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    background-color: #ecebc8;
-  }
+  margin: 0;  
+  font-family: system-ui;
+  background-image: url("./fondo.jpg");
+  background-position: inherit;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

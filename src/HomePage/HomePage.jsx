@@ -5,14 +5,15 @@ import { HabitList } from "../HabitList/HabitList";
 import { CreateHabitButton } from "../CreateHabitButton/CreateHabitButton";
 import { CreateHabitForm } from "../CreateHabitForm/CreateHabitForm";
 import { Modal } from "../Modal/Modal";
+import "./HomePage.css";
 
 function HomePage (props) {
     return (
 
-        <div className='Navigation'>
-        
-
-        <DateBar/>  
+        <div className='HomePage-container'>        
+        <div>
+          <DateBar/> 
+        </div> 
 
         {props.habits.length === 0 && <EmptyHabits openModal={props.openModal}/>}
         

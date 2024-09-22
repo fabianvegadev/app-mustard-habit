@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { NavBar } from '../NavBar/NavBar';
 import { HabitCalendar } from '../HabitCalendar/HabitCalendar';
 import { HomePage } from '../HomePage/HomePage';
-
 import './App.css'
 
 function useLocalStorage (itemName, initianValue) {
@@ -81,26 +80,26 @@ const onDeleteHabit = (text) => {
         <NavBar/> 
       </div> 
 
-      <Routes>
+      <div className='NavigationContainer'>
+        <Routes>
+          <Route path='/' element={
+            <HomePage 
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            newHabitValue={newHabitValue}
+            setNewHabitValue={setNewHabitValue}
+            habits={habits}
+            onAddHabit={onAddHabit}
+            onCompleteHabit={onCompleteHabit}
+            onDeleteHabit={onDeleteHabit}
+          />}/>
 
-        <Route path='/' element={
-          <HomePage 
-          openModal={openModal}
-          setOpenModal={setOpenModal}
-          newHabitValue={newHabitValue}
-          setNewHabitValue={setNewHabitValue}
-          habits={habits}
-          onAddHabit={onAddHabit}
-          onCompleteHabit={onCompleteHabit}
-          onDeleteHabit={onDeleteHabit}
-        />}/>
+          <Route path='/calendar' element={
+            <HabitCalendar 
+          />}/>        
 
-        <Route path='/calendar' element={
-          <HabitCalendar 
-        />}/>        
-
-      </Routes>
-
+        </Routes>
+      </div>
     </BrowserRouter>
   )
 }
