@@ -67,12 +67,8 @@ function App() {
   }
 
   const onEditHabit = (index, editHabitText, editHabitJornada) => {
-    const editHabits = habits.map((habit, idx) => {
-      if (idx === index) {
-        return {...habit,  text: editHabitText, jornada: editHabitJornada, streak: 0, complete: false}
-      }
-      return habit;
-    });
+    const editHabits = [...habits]
+    editHabits[index] = {...editHabits[index], text: editHabitText, jornada: editHabitJornada}
     saveHabit(editHabits);
   }
 

@@ -4,7 +4,7 @@ import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 
-const DateBar = () => {
+const DateBar = (props) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(new Date().getDate()); // Estado para el día seleccionado
 
@@ -47,6 +47,10 @@ const DateBar = () => {
     setSelectedDay(today.getDate()); // Actualizar el día seleccionado con el día actual
   }, [currentDate]);
 
+  
+
+
+
   return (
     <div className="date-bar-container">
       <button onClick={handlePreviousWeek} className="date-bar-button">
@@ -56,7 +60,14 @@ const DateBar = () => {
       {daysWithDates.map((item, index) => (
         <div 
           key={index} 
-          className={`date-bar-day ${item.dayNumber === selectedDay ? 'selected' : ''}`}
+          
+          className={
+            `date-bar-day 
+            ${(props.habits.every((habit) => habit.completed === true) & item.dayNumber === selectedDay)
+              ? 'felicitaciones'
+              : item.dayNumber === selectedDay
+                && 'selected'}            
+          `}
         >
           <div className='text-date'>{item.name}</div>
           <div className='text-date'>{item.dayNumber}</div>

@@ -1,3 +1,4 @@
+import { TbRuler } from 'react-icons/tb';
 import './CreateHabitButton.css';
 
 function CreateHabitButton ({setOpenModal}) {

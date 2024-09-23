@@ -8,11 +8,14 @@ import { Modal } from "../Modal/Modal";
 import "./HomePage.css";
 
 function HomePage (props) {
+
+    
+
     return (
 
         <div className='HomePage-container'>        
         <div>
-          <DateBar/> 
+          <DateBar habits={props.habits}/> 
         </div> 
 
         {props.habits.length === 0 ? 
