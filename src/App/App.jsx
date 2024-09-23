@@ -37,42 +37,44 @@ function App() {
   
   const [newHabitValue, setNewHabitValue] = useState('');
 
-  const onAddHabit = (text) => {
+  const [newHabitJornada, setNewHabitJornada] = useState('');
+
+  const onAddHabit = (text, jornada) => {
     var idHabit = Math.random()
     const newHabits = [...habits];  
     const habitText = text[0].toUpperCase() + text.substring(1);
     newHabits.unshift({
         key: idHabit,
         text: habitText,
+        jornada: jornada,
         streak: 0,
         completed: false,
     })
-    console.log(idHabit)
-    console.log(newHabits)
-    text = ''
-
     saveHabit(newHabits);
-}
+  }
 
-const onCompleteHabit = (text) => {
-  const newHabits = [...habits];
-  const habitIndex = newHabits.findIndex(
-      (habit) => habit.text == text
-  );
-  newHabits[habitIndex].completed = true;
-  newHabits.sort( (i) => i.completed ? 1 : -1) 
-  saveHabit(newHabits);
-  console.log (habits.length)
-}
+  const onCompleteHabit = (index) => {
+    const newHabits = [...habits];
+    newHabits[index].completed = !newHabits[index].completed;
+    newHabits.sort( (i) => i.completed ? 1 : -1) 
+    saveHabit(newHabits);
+  }
 
-const onDeleteHabit = (text) => {
-  const newHabits = [...habits];
-  const habitIndex = newHabits.findIndex(
-      (habit) => habit.text == text
-  );
-  newHabits.splice(habitIndex, 1);
-  saveHabit(newHabits);
-}
+  const onDeleteHabit = (index) => {
+    const newHabits = [...habits];
+    newHabits.splice(newHabits[index], 1);
+    saveHabit(newHabits);
+  }
+
+  const onEditHabit = (index, editHabitText, editHabitJornada) => {
+    const editHabits = habits.map((habit, idx) => {
+      if (idx === index) {
+        return {...habit,  text: editHabitText, jornada: editHabitJornada, streak: 0, complete: false}
+      }
+      return habit;
+    });
+    saveHabit(editHabits);
+  }
 
   return (
     <BrowserRouter>
@@ -88,10 +90,13 @@ const onDeleteHabit = (text) => {
             setOpenModal={setOpenModal}
             newHabitValue={newHabitValue}
             setNewHabitValue={setNewHabitValue}
+            newHabitJornada={newHabitJornada}
+            setNewHabitJornada={setNewHabitJornada}
             habits={habits}
             onAddHabit={onAddHabit}
             onCompleteHabit={onCompleteHabit}
             onDeleteHabit={onDeleteHabit}
+            onEditHabit={onEditHabit}
           />}/>
 
           <Route path='/calendar' element={

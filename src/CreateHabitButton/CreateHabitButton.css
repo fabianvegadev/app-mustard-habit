@@ -13,8 +13,9 @@
     border-radius: 50%;
     cursor: pointer;
     font-size: 50px;
-    position: fixed;
-    bottom: 56px;
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
     font-weight: bold;
     color: #FAFAFA;
     display: flex;
@@ -22,7 +23,6 @@
     align-items: center;
     height: 64px;
     width: 64px;
-    z-index: 3;
 
     transform: rotate(0);
     transition: .3s ease;

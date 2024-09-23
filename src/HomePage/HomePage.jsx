@@ -15,20 +15,15 @@ function HomePage (props) {
           <DateBar/> 
         </div> 
 
-        {props.habits.length === 0 && <EmptyHabits openModal={props.openModal}/>}
-        
-        {props.habits.length != 0 && (
+        {props.habits.length === 0 ? 
+          <EmptyHabits openModal={props.openModal}/> :
           <HabitList
           habits={props.habits} 
           onCompleteHabit={props.onCompleteHabit}
           onDeleteHabit={props.onDeleteHabit}
-        />
-        )}
-
-        <CreateHabitButton 
-          setOpenModal={props.setOpenModal}
-          onAddHabit={(e) => props.onAddHabit(e.target.value)}
-        />
+          onEditHabit={props.onEditHabit}
+          />
+        }
 
         {props.openModal && (
           <Modal>
@@ -37,9 +32,15 @@ function HomePage (props) {
               onAddHabit={props.onAddHabit}
               newHabitValue={props.newHabitValue}
               setNewHabitValue={props.setNewHabitValue}
+              newHabitJornada={props.newHabitJornada}
+              setNewHabitJornada={props.setNewHabitJornada}
             />
           </Modal>  
         )}
+        <CreateHabitButton 
+          setOpenModal={props.setOpenModal}
+          onAddHabit={(e) => props.onAddHabit(e.target.value)}
+        />
       </div>
 
     )

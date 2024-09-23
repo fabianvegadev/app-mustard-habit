@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 40px;
 }
 
 .MessageContainer > h2 {
@@ -19,8 +20,8 @@
     background-color: transparent;
     border: none;
     font-size: 50px;
-    position: fixed;
-    bottom: 240px;
+    position: absolute;
+    right: 216px;
     font-weight: bold;
     color: black;
     display: flex;
