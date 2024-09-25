@@ -34,6 +34,8 @@ function HabitList (props) {
                 onCompleteHabit={props.onCompleteHabit}
                 onDeleteHabit={props.onDeleteHabit}
                 onEditHabit={props.onEditHabit}
+                setNewHabitValue={props.setNewHabitValue}
+
             ></HabitItem>
             )}
             

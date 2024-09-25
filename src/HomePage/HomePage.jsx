@@ -15,7 +15,12 @@ function HomePage (props) {
 
         <div className='HomePage-container'>        
         <div>
-          <DateBar habits={props.habits}/> 
+          <DateBar 
+            habits={props.habits}
+            selectDay={props.selectDay}
+            selectedDay={props.selectedDay}
+            setSelectedDay={props.setSelectedDay}
+          /> 
         </div> 
 
         {props.habits.length === 0 ? 
@@ -25,6 +30,8 @@ function HomePage (props) {
           onCompleteHabit={props.onCompleteHabit}
           onDeleteHabit={props.onDeleteHabit}
           onEditHabit={props.onEditHabit}
+          setNewHabitValue={props.setNewHabitValue}
+
           />
         }
 

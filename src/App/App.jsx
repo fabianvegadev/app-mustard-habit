@@ -12,32 +12,40 @@ function useLocalStorage (itemName, initianValue) {
   let parsedItem;
   
   if (localStorageItem) {
-      parsedItem = JSON.parse(localStorageItem);  
+    parsedItem = JSON.parse(localStorageItem);  
   } else {
-      localStorage.setItem(itemName, JSON.stringify(initianValue))
-      parsedItem = initianValue;
-  }   
-
-  const [item, setItem] = useState(parsedItem);
+    localStorage.setItem(itemName, JSON.stringify(initianValue))
+    parsedItem = initianValue;
+  }  
+  
+  const [item, setItem] = useState(parsedItem);  
   
   const saveItem = (newItem) => {
       localStorage.setItem(itemName, JSON.stringify(newItem))
       setItem(newItem)
   }
 
-  return [item, saveItem]
-
+  return [parsedItem, item, saveItem]
 }
 
 function App() {
+  
+  const [selectedDay, setSelectedDay] = useState(`Habits_${new Date().toLocaleDateString()}`)
 
+  const [parsedItem, habits, saveHabit] = useLocalStorage(`${selectedDay}`, []);   
+  
+  
+  const selectDay = (e) => {
+    setSelectedDay(e.target.title)   
+    saveHabit(parsedItem) 
+  }  
+  
   const [openModal, setOpenModal] = useState (false)
-
-  const [habits, saveHabit] = useLocalStorage('Habits_v1', []);   
   
   const [newHabitValue, setNewHabitValue] = useState('');
 
   const [newHabitJornada, setNewHabitJornada] = useState('');
+
 
   const onAddHabit = (text, jornada) => {
     var idHabit = Math.random()
@@ -60,9 +68,9 @@ function App() {
     saveHabit(newHabits);
   }
 
-  const onDeleteHabit = (index) => {
+  const onDeleteHabit = (key) => {
     const newHabits = [...habits];
-    newHabits.splice(newHabits[index], 1);
+    newHabits.splice(newHabits.key=key, 1);
     saveHabit(newHabits);
   }
 
@@ -70,6 +78,8 @@ function App() {
     const editHabits = [...habits]
     editHabits[index] = {...editHabits[index], text: editHabitText, jornada: editHabitJornada}
     saveHabit(editHabits);
+    console.log(editHabits[index])
+    console.log(editHabits)
   }
 
   return (
@@ -82,6 +92,9 @@ function App() {
         <Routes>
           <Route path='/' element={
             <HomePage 
+            selectDay={selectDay}
+            selectedDay={selectedDay}
+            setSelectedDay={setSelectedDay}
             openModal={openModal}
             setOpenModal={setOpenModal}
             newHabitValue={newHabitValue}

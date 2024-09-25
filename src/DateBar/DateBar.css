@@ -7,10 +7,12 @@
 }
 
 .date-bar-day {
-  width: 52px; /* Ajusta el tamaño del círculo */
-  height: 52px; /* Ajusta el tamaño del círculo */
+  width: 40px; /* Ajusta el tamaño del círculo */
+  height: 40px; /* Ajusta el tamaño del círculo */
   border-radius: 50%;
-  background-color: #e0e0e0;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
   margin: 5px; /* Espacio entre círculos */
   min-width: none;
   cursor: pointer;
@@ -20,6 +22,7 @@
   flex-direction: column; /* Cambia a columna */
   align-items: center; /* Centra el contenido */
   justify-content: center;
+  position: relative;
 }
 
 .date-bar-day:hover {
@@ -28,7 +31,7 @@
 }
 
 .date-bar-button:hover {
-    background-color: #d5b143; /* Cambio de color al pasar el ratón */
+    color: #d5b143; /* Cambio de color al pasar el ratón */
   }
 
 .date-bar-button {
@@ -44,11 +47,31 @@
   color: #d5b143; /* Cambio de color al pasar el ratón */
 }
 
-.date-bar-day.selected {
-  background-color: rgb(177, 175, 175); /* Color de fondo para el día seleccionado */
+.date-bar-day.currentDay {
+  background-color: rgb(60, 60, 60, 0.6); /* Color de fondo para el día seleccionado */
   color: white; /* Color del texto */
   font-weight: bold;
 }
+
+.date-bar-day.selectedDay {
+  background-color: rgba(216, 189, 101, 0.7); /* Color de fondo para el día seleccionado */
+  color: white; /* Color del texto */
+  font-weight: bold;
+}
+
+.IconCheck {
+    background-color: green;
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -4px;
+    right: 0px;
+}
+
 
 .text-date {
   height: 16px;
@@ -57,5 +80,6 @@
 }
 
 .felicitaciones {
-  background-color: red;
+  background-color: rgba(41, 187, 90, 0.658);
+  
 }

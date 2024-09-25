@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import './HabitItem.css';
-import { FiCheck, FiTrash2, FiEdit, FiX } from "react-icons/fi";
+import { FiCheck, FiTrash2, FiEdit} from "react-icons/fi";
+import { GiAlliedStar } from "react-icons/gi";
+import { FaCheck } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 
 function HabitItem (props) {     
     
@@ -10,40 +13,53 @@ function HabitItem (props) {
     const [editHabitJornada, setEditHabitJornada] = useState('')
 
     const handleEdit = () => {
+        const habitTextUp = editHabitText[0].toUpperCase() + editHabitText.substring(1);
+        setEditHabitText(habitTextUp)
         if (isEditing) {
-            props.onEditHabit(props.index, editHabitText, editHabitJornada)
-        }
+            props.onEditHabit(props.index, habitTextUp, editHabitJornada)
+        }        
         setIsEditing(!setIsEditing)
-        console.log(editHabitText)
-        console.log(editHabitJornada)
-        console.log(props.index)
+    }
+
+    const handleCancelEdit = () => {
+        setIsEditing(false);
+        setEditHabitText(props.text);
+        setEditHabitJornada(props.jornada);
+    };
+
+    const openEditing = () => {
+        setIsEditing(!isEditing)
+        setEditHabitText(props.text)
+        setEditHabitJornada(props.jornada)
     }
 
     return (
         <li className= {`habitItem ${props.completed && 'habitItem--completed'}`}>
 
             {isEditing ? (
-                <div>
-                    <input 
-                        type="text"
-                        value={editHabitText}
-                        onChange={(e) => setEditHabitText(e.target.value)}
-                        placeholder="Editar hábito..."
-                    />
+                <div className='editingItem'>
+                    <div className='inputsContainer'>
+                        <textarea
+                            type="text"
+                            value={editHabitText}
+                            onChange={(e) => setEditHabitText(e.target.value)}
+                        />
 
-                    <select 
-                        value={editHabitJornada}
-                        onChange={(e) => setEditHabitJornada(e.target.value)}>                        
-                            <option value="">Jornada</option>
-                            <option value="Mañana">Mañana</option>
-                            <option value="Tarde">Tarde</option>
-                            <option value="Noche">Noche</option>
-                    </select>
-
-                    <button onClick={handleEdit}><FiCheck/></button>
-                    <button><FiX/></button>
-                    </div> ):( 
-                    <>
+                        <select 
+                            value={editHabitJornada}
+                            onChange={(e) => setEditHabitJornada(e.target.value)}>                        
+                                <option value="">Jornada</option>
+                                <option value="Mañana">Mañana</option>
+                                <option value="Tarde">Tarde</option>
+                                <option value="Noche">Noche</option>
+                        </select>
+                    </div>
+                    <div className='iconsContainer'>
+                        <button className='iconCheckEdit' onClick={handleEdit}><FaCheck size={15}/></button>
+                        <button className='iconCancelEdit'onClick={handleCancelEdit}><FaXmark size={19}/></button>
+                    </div>
+                </div> ):( 
+                <>
                     <button 
                         className= {`buttonCheck ${!props.completed && 'buttonCheck--incomplete'}`}
                         onClick={() => props.onCompleteHabit(props.index)}            
@@ -53,19 +69,27 @@ function HabitItem (props) {
                     <p id='textHabit' onClick={() => props.onCompleteHabit(props.index)}>
                         {props.text}
                         <small>{props.jornada}</small> 
-                    </p>                      
+                    </p>              
+                    
+                    
+                        <button 
+                            className='buttonEdit'
+                            onClick={openEditing}
+                            ><FiEdit/>
+                        </button>
 
-                    <button 
-                        className='buttonEdit'
-                        onClick={() => setIsEditing(!isEditing)}
-                        ><FiEdit/>
-                    </button>
+                        <button             
+                            className={`buttonDelete ${props.completed && 'buttonDelete--complete'}`}
+                            onClick={() => props.onDeleteHabit(props.index)}
+                            ><FiTrash2/>                            
+                        </button> 
 
-                    <button             
-                        className={`buttonDelete ${props.completed && 'buttonDelete--complete'}`}
-                        onClick={() => props.onDeleteHabit(props.index)}
-                        ><FiTrash2/>
-                    </button> 
+                        {props.completed === true 
+                            ? <div className='iconStar'><GiAlliedStar size={20}/></div>
+                            : <div/>}
+                    
+
+                    
                 </> )
             }
         </li>

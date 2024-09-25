@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import './DateBar.css'; 
+import { FaRegCheckCircle } from "react-icons/fa";
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
-const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+const daysOfWeek = ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'];
 
 const DateBar = (props) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(new Date().getDate()); // Estado para el día seleccionado
+  const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().getDate()); // Estado para el día seleccionado
 
   // Función para obtener los días con las fechas correspondientes
   const getDaysWithDates = (date) => {
@@ -19,11 +20,14 @@ const DateBar = (props) => {
       daysWithDates.push({
         name: daysOfWeek[i],
         dayNumber: day.getDate(),
+        monthNumber: (day.getMonth() + 1),
+        yearNumber: day.getFullYear(),
         fullDate: day // Guardamos la fecha completa
       });
     }
     return daysWithDates;
   };
+
 
   // Función para retroceder una semana
   const handlePreviousWeek = () => {
@@ -44,12 +48,8 @@ const DateBar = (props) => {
   // Resaltar el día actual automáticamente
   useEffect(() => {
     const today = new Date();
-    setSelectedDay(today.getDate()); // Actualizar el día seleccionado con el día actual
-  }, [currentDate]);
-
-  
-
-
+    setEfectCurrentDay(today.getDate()); // Actualizar el día seleccionado con el día actual
+  }, [currentDate]);  
 
   return (
     <div className="date-bar-container">
@@ -59,18 +59,24 @@ const DateBar = (props) => {
 
       {daysWithDates.map((item, index) => (
         <div 
-          key={index} 
-          
+          title={`Habits_${item.dayNumber}/${item.monthNumber}/${item.yearNumber}`}
+          onClick={(e) => props.selectDay (e)}
+          key={index}           
           className={
             `date-bar-day 
-            ${(props.habits.every((habit) => habit.completed === true) & item.dayNumber === selectedDay)
+            ${(props.habits.every((habit) => habit.completed === true) & item.dayNumber === efectCurrentDay & props.habits.length != 0)
               ? 'felicitaciones'
-              : item.dayNumber === selectedDay
-                && 'selected'}            
-          `}
+              : item.dayNumber === efectCurrentDay
+                && 'currentDay'}            
+            ${(props.selectedDay === `Habits_${item.dayNumber}/${item.monthNumber}/${item.yearNumber}` 
+              & item.dayNumber != efectCurrentDay)
+                && 'selectedDay'} 
+                `}
         >
+          {(props.habits.every((habit) => habit.completed === true) & item.dayNumber === efectCurrentDay & props.habits.length != 0) 
+            ? <div className='IconCheck'> <FaRegCheckCircle/> </div> 
+            : <div/>}          
           <div className='text-date'>{item.name}</div>
-          <div className='text-date'>{item.dayNumber}</div>
         </div>
       ))}
 
