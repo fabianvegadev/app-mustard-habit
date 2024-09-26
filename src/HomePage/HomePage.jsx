@@ -16,6 +16,7 @@ function HomePage (props) {
         <div className='HomePage-container'>        
         <div>
           <DateBar 
+            logros={props.logros}
             habits={props.habits}
             selectDay={props.selectDay}
             selectedDay={props.selectedDay}

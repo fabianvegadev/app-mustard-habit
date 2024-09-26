@@ -7,27 +7,27 @@ const daysOfWeek = ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'];
 
 const DateBar = (props) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().getDate()); // Estado para el día seleccionado
+  const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().toLocaleDateString()); // Estado para el día seleccionado
 
   // Función para obtener los días con las fechas correspondientes
   const getDaysWithDates = (date) => {
     const daysWithDates = [];
     const today = new Date(date);
-
     for (let i = 0; i < 7; i++) {
       const day = new Date(today);
       day.setDate(today.getDate() - today.getDay() + i);
       daysWithDates.push({
         name: daysOfWeek[i],
-        dayNumber: day.getDate(),
-        monthNumber: (day.getMonth() + 1),
-        yearNumber: day.getFullYear(),
-        fullDate: day // Guardamos la fecha completa
+        fullDate: day.toLocaleDateString(),
+        allCompleted: false
       });
     }
+
+    
     return daysWithDates;
   };
 
+  
 
   // Función para retroceder una semana
   const handlePreviousWeek = () => {
@@ -48,8 +48,23 @@ const DateBar = (props) => {
   // Resaltar el día actual automáticamente
   useEffect(() => {
     const today = new Date();
-    setEfectCurrentDay(today.getDate()); // Actualizar el día seleccionado con el día actual
+    setEfectCurrentDay(today.toLocaleDateString()); // Actualizar el día seleccionado con el día actual
   }, [currentDate]);  
+
+
+  // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
+  useEffect(() => {
+    props.logros.map((logro) => {
+      daysWithDates.map( (day) => {
+        if (logro.date === day.fullDate) {
+          day.allCompleted = true
+        }
+      })
+    })  
+    console.log(daysWithDates)
+  }, [props.logros])
+
+  
 
   return (
     <div className="date-bar-container">
@@ -58,22 +73,24 @@ const DateBar = (props) => {
       </button>
 
       {daysWithDates.map((item, index) => (
+        console.log(item),
         <div 
-          title={`Habits_${item.dayNumber}/${item.monthNumber}/${item.yearNumber}`}
+          title={[item.fullDate]}
           onClick={(e) => props.selectDay (e)}
           key={index}           
           className={
             `date-bar-day 
-            ${(props.habits.every((habit) => habit.completed === true) & item.dayNumber === efectCurrentDay & props.habits.length != 0)
+            ${(item.allCompleted == true
+              & props.habits.length != 0)
               ? 'felicitaciones'
-              : item.dayNumber === efectCurrentDay
+              : item.fullDate === efectCurrentDay
                 && 'currentDay'}            
-            ${(props.selectedDay === `Habits_${item.dayNumber}/${item.monthNumber}/${item.yearNumber}` 
-              & item.dayNumber != efectCurrentDay)
+            ${(props.selectedDay === (item.fullDate) 
+              & item.fullDate != efectCurrentDay)
                 && 'selectedDay'} 
                 `}
         >
-          {(props.habits.every((habit) => habit.completed === true) & item.dayNumber === efectCurrentDay & props.habits.length != 0) 
+          {(item.allCompleted === true & props.habits.length != 0) 
             ? <div className='IconCheck'> <FaRegCheckCircle/> </div> 
             : <div/>}          
           <div className='text-date'>{item.name}</div>

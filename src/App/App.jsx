@@ -30,25 +30,24 @@ function useLocalStorage (itemName, initianValue) {
 
 function App() {
   
-  const [selectedDay, setSelectedDay] = useState(`Habits_${new Date().toLocaleDateString()}`)
+  const [selectedDay, setSelectedDay] = useState(new Date().toLocaleDateString())
 
-  const [parsedItem, habits, saveHabit] = useLocalStorage(`${selectedDay}`, []);   
-  
+  const [parsedHabits, habits, saveHabit] = useLocalStorage(`${selectedDay}`, []);     
   
   const selectDay = (e) => {
-    setSelectedDay(e.target.title)   
-    saveHabit(parsedItem) 
+    setSelectedDay(e.target.title)  
+    saveHabit(parsedHabits) 
   }  
   
-  const [openModal, setOpenModal] = useState (false)
-  
-  const [newHabitValue, setNewHabitValue] = useState('');
-
+  const [openModal, setOpenModal] = useState (false);  
+  const [newHabitValue, setNewHabitValue] = useState('');  
   const [newHabitJornada, setNewHabitJornada] = useState('');
+  const [parsedLogros, logros, saveLogros] = useLocalStorage ('logros', []);
+  const [completedLogro, setCompletedLogro] = useState(false);
 
 
   const onAddHabit = (text, jornada) => {
-    var idHabit = Math.random()
+    var idHabit = (Math.random() * 10);
     const newHabits = [...habits];  
     const habitText = text[0].toUpperCase() + text.substring(1);
     newHabits.unshift({
@@ -57,15 +56,30 @@ function App() {
         jornada: jornada,
         streak: 0,
         completed: false,
-    })
-    saveHabit(newHabits);
+    });
+    
+    saveHabit(newHabits);    
   }
+
 
   const onCompleteHabit = (index) => {
     const newHabits = [...habits];
     newHabits[index].completed = !newHabits[index].completed;
-    newHabits.sort( (i) => i.completed ? 1 : -1) 
+    newHabits.sort( (i) => i.completed ? 1 : -1);
+
+    const newLogros = [...logros];
+    const fullDate = new Date().toLocaleDateString()
+
+    if ((newHabits.every((habit) => habit.completed === true)) & 
+        (newLogros.every((logro) => logro.fullDate === fullDate))) {
+          newLogros.push({
+            date: fullDate
+          }) 
+    }
+    
     saveHabit(newHabits);
+    saveLogros(newLogros);  
+    console.log(newLogros)
   }
 
   const onDeleteHabit = (key) => {
@@ -78,9 +92,9 @@ function App() {
     const editHabits = [...habits]
     editHabits[index] = {...editHabits[index], text: editHabitText, jornada: editHabitJornada}
     saveHabit(editHabits);
-    console.log(editHabits[index])
-    console.log(editHabits)
   }
+
+  
 
   return (
     <BrowserRouter>
@@ -92,6 +106,7 @@ function App() {
         <Routes>
           <Route path='/' element={
             <HomePage 
+            logros={logros}
             selectDay={selectDay}
             selectedDay={selectedDay}
             setSelectedDay={setSelectedDay}
