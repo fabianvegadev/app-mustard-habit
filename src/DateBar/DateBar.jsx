@@ -40,8 +40,11 @@ const DateBar = (props) => {
   const handleNextWeek = () => {
     const newDate = new Date(currentDate);
     newDate.setDate(currentDate.getDate() + 7);
+    console.log(currentDate)
     setCurrentDate(newDate);
+    console.log(currentDate)
   };
+  console.log(currentDate)
 
   const daysWithDates = getDaysWithDates(currentDate);
 
