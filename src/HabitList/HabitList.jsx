@@ -18,19 +18,23 @@ import { HabitItem } from "../HabitItem/HabitItem";
 
 
 function HabitList (props) {
-    
 
     return (
         <ul className="HabitList">
 
-            {props.habits.map((habit) => 
+            {props.habits.map((habit, index) => 
+            (habit.date === props.selectedDay) &&
             <HabitItem 
                 key={habit.key} 
-                text={habit.text} 
+                text={habit.text}
+                index={index}
+                jornada={habit.jornada} 
                 streak={habit.streak} 
                 completed={habit.completed}
-                onCompleteHabit={() => props.onCompleteHabit(habit.text)}
-                onDeleteHabit={() => props.onDeleteHabit(habit.text)}
+                onCompleteHabit={props.onCompleteHabit}
+                onDeleteHabit={props.onDeleteHabit}
+                onEditHabit={props.onEditHabit}
+                setNewHabitValue={props.setNewHabitValue}
             ></HabitItem>
             )}
             

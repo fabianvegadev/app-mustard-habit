@@ -1,52 +1,45 @@
 .NavBar {
-    background-color: #FFFBE6;
+    background-color: transparent;
+    height: 48px;
     box-shadow: 0px 2px 12px #A5A5A5;
-    border-style: solid;
-    border-width: thin;
-    border-color: #F6E96B;
-    margin-bottom: 16px;
-    border-radius: 16px;
     display: flex;
     flex-direction: row;   
-    justify-content: space-around;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
   }
 
-  .LogoContainer, .GraficsContainer, .MenuContainer, .UserContainer{
-    border-radius: 50%;
-    border-style: solid;
-    border-width: thin;
-    border-color: #F6E96B;
-    height: 52px;
-    width: 52px;
+  .LogoContainer {
     display: flex;
     align-items: center;
-    justify-content: center;    
-    margin: 8px;
+    margin: 8px 8px 8px 16px;
+    height: 32px;
+    cursor: pointer;    
   }
 
-  .Logo, .GraficsIcon, .MenuIcon, .UserIcon{
+  .Logo {
     max-height: 40px;
     max-width: 40px;
     border-radius: 50%;
-    
+    border-style: solid;
+    border-color: white;
+    margin-right: 16px;  
   }
 
-  
-  .GraficsIcon{
-    height: 40px;
-    width: 40px;
+  .GraficsContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
   }
 
-  
-
-  .MenuIcon{
-    height: 40px;
-    width: 40px;
+  .GraficsIcon, .MenuIcon, .UserIcon{
+    height: 30px;
+    width: 30px;
+    margin-right: 16px;
+    cursor: pointer;
   }
 
-  
-
-  .UserIcon{
-    height: 40px;
-    width: 40px;
+  .UserIcon:hover {
+    transform:rotateY(180deg);
+    transition: 2s;
   }

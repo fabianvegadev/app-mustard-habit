@@ -6,7 +6,6 @@ import './HabitCalendar.css';
 const HabitCalendar = () => {
   const [selectedDate, setSelectedDate] = useState([]); // Fecha seleccionada en el calendario
   const [completedDates, setCompletedDates] = useState([]); // Fechas completadas
-  const [text, setText] = useState(''); // Texto ingresado en el cuadro de texto
 
   // Manejar el cambio de fecha seleccionada
   /* const onDateChange = (date) => {
@@ -31,14 +30,10 @@ const HabitCalendar = () => {
     }
   };
 
-  // Manejar el cambio en el cuadro de texto
-  const handleTextChange = (event) => {
-    setText(event.target.value);
-  };
-
   return (
     <div style={{ textAlign: 'center', marginTop: '5px' }}>
-      <h4>Selecciona la fecha en la cual completaste tu hábito</h4>
+
+      <h2>Calendario de Tareas Completadas</h2>
 
       {/* Contenedor del calendario */} 
       <div> 
@@ -65,27 +60,6 @@ const HabitCalendar = () => {
         Marcar como completado
       </button>
 
-      {/* Cuadro de texto para ingresar información */}
-      <div style={{ marginTop: '20px' }}>
-        <h4>Escribe tu habito:</h4>
-        <textarea
-          value={text}
-          onChange={handleTextChange}
-          rows="2"
-          cols="10"
-          placeholder="Escribe aquí..."
-          style={{ width: '90px', padding: '2px', fontSize: '9px' }}
-        />
-        <p>Texto ingresado: {text}</p>
-      </div>
-
-      {/* Lista de fechas completadas */}
-      <h3>Fechas completadas:</h3>
-      <ul>
-        {completedDates.map((date, index) => (
-          <li key={index}>{date}</li>
-        ))}
-      </ul>
     </div>
   );
 };

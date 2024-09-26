@@ -5,16 +5,17 @@
 }
 
 .CreateHabitButton {
-    background-color: #41B06E;
+    background-color: rgba(40, 40, 40, 0.85);
     box-shadow: 0px 2px 12px #A5A5A5;
     border-style: solid;
     border-width: thin;
-    border-color: #F6E96B;
+    border-color: black;
     border-radius: 50%;
     cursor: pointer;
     font-size: 50px;
-    position: fixed;
-    bottom: 56px;
+    position: absolute;
+    bottom: 0px;
+    right: 16px;
     font-weight: bold;
     color: #FAFAFA;
     display: flex;
@@ -22,7 +23,6 @@
     align-items: center;
     height: 64px;
     width: 64px;
-    z-index: 3;
 
     transform: rotate(0);
     transition: .3s ease;
@@ -30,5 +30,6 @@
 
 .CreateHabitButton:hover {
     transform: rotate(180deg);
+    transition: 1.2;
 }
 

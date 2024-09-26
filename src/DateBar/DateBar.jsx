@@ -1,71 +1,71 @@
-import { useState, useEffect } from 'react';
-import { FiArrowRight } from "react-icons/fi";
-import { FiArrowLeft } from "react-icons/fi";
 import './DateBar.css'; 
+import { FaRegCheckCircle } from "react-icons/fa";
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
-const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+const daysOfWeek = ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'];
 
-const DateBar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(new Date().getDate()); // Estado para el día seleccionado
-
-  // Función para obtener los días con las fechas correspondientes
-  const getDaysWithDates = (date) => {
-    const daysWithDates = [];
+const DateBar = (props) => {
+  
+  const getShowDaysWithDates = (date) => {
+    const showDaysWithDates = [ ];
     const today = new Date(date);
-
     for (let i = 0; i < 7; i++) {
       const day = new Date(today);
       day.setDate(today.getDate() - today.getDay() + i);
-      daysWithDates.push({
-        name: daysOfWeek[i],
-        dayNumber: day.getDate(),
-        fullDate: day // Guardamos la fecha completa
-      });
-    }
-    return daysWithDates;
-  };
+      const dia = day.getDate()
+      const mes = day.getMonth() + 1
+      const fullDay = day.toLocaleDateString()
+      props.daysWithDates.map((day) => {
+        if (fullDay === day.fullDate) {
+          showDaysWithDates.push(
+            {
+              name: daysOfWeek[i],
+              dia: dia,
+              mes: mes,
+              fullDate: day.fullDate,
+              allCompleted: day.allCompleted
+            }
+          )
+        }
+      })    
+    };
+    return showDaysWithDates;
+  }
 
-  // Función para retroceder una semana
-  const handlePreviousWeek = () => {
-    const newDate = new Date(currentDate);
-    newDate.setDate(currentDate.getDate() - 7);
-    setCurrentDate(newDate);
-  };
-
-  // Función para avanzar una semana
-  const handleNextWeek = () => {
-    const newDate = new Date(currentDate);
-    newDate.setDate(currentDate.getDate() + 7);
-    setCurrentDate(newDate);
-  };
-
-  const daysWithDates = getDaysWithDates(currentDate);
-
-  // Resaltar el día actual automáticamente
-  useEffect(() => {
-    const today = new Date();
-    setSelectedDay(today.getDate()); // Actualizar el día seleccionado con el día actual
-  }, [currentDate]);
+  const showDaysWithDates = getShowDaysWithDates(props.currentDate)
 
   return (
     <div className="date-bar-container">
-      <button onClick={handlePreviousWeek} className="date-bar-button">
-        <i className="bi bi-arrow-left-circle-fill"><FiArrowLeft /></i>
+      <button onClick={props.handlePreviousWeek} className="date-bar-button">
+        <FiArrowLeft/>
       </button>
 
-      {daysWithDates.map((item, index) => (
+      {showDaysWithDates.map((item, index) => (
+        // console.log(item),
         <div 
-          key={index} 
-          className={`date-bar-day ${item.dayNumber === selectedDay ? 'selected' : ''}`}
+          title={[item.fullDate]}
+          onClick={(e) => props.selectDay (e)}
+          key={index}           
+          className={
+            `date-bar-day 
+            ${(item.allCompleted == true)
+              & (props.habits.length != 0)
+              && 'felicitaciones'}            
+            ${props.selectedDay === (item.fullDate) 
+                && 'selectedDay'} 
+                `}
         >
-          <div>{item.name}</div>
-          <div>{item.dayNumber}</div>
+          {(item.allCompleted === true & props.habits.length != 0) 
+            ? <div className='IconCheck'> <FaRegCheckCircle/> </div> 
+            : <div/>}          
+          <div className='text-date'>{item.name}</div>
+          <div>{item.dia}</div>
+          <div>{item.mes}</div>
         </div>
       ))}
 
-      <button onClick={handleNextWeek} className="date-bar-button">
-        <i className="bi bi-arrow-right-circle-fill"><FiArrowRight /></i>
+      <button onClick={props.handleNextWeek} className="date-bar-button">
+        <FiArrowRight/>
       </button>
     </div>
   );
