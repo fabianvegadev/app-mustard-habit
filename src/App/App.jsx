@@ -25,14 +25,13 @@ function useLocalStorage (itemName, initianValue) {
       setItem(newItem);
   }
 
-  return [parsedItem, item, saveItem];
+  return [item, saveItem];
 }
-
 const daysOfWeek = ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'];
 
 function App() {
 
-   // Función para obtener los días con las fechas correspondientes
+   // Función para obtener los días iniciales con sus respectivos datos
   const getDaysWithDates = (date) => {
     const daysWithDates = [];
     const today = new Date(date);
@@ -49,21 +48,41 @@ function App() {
   };  
   
   const [selectedDay, setSelectedDay] = useState(new Date().toLocaleDateString());
-  const [parsedHabits, habits, saveHabit] = useLocalStorage(`${selectedDay}`, []); 
+  const [habits, saveHabit] = useLocalStorage('habits', []); 
   const [openModal, setOpenModal] = useState (false);  
   const [newHabitValue, setNewHabitValue] = useState('');  
   const [newHabitJornada, setNewHabitJornada] = useState('');
-  const [, logros, saveLogros] = useLocalStorage ('logros', []);
-  const [currentDate, setCurrentDate] = useLocalStorage('currentDate', new Date()); // Estado para el movimiento de la navbar
+  const [logros, saveLogros] = useLocalStorage ('logros', []);
+  const [currentDate, setCurrentDate] = useState(new Date()); // Estado para el movimiento de la navbar
   const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().toLocaleDateString()); // Estado para el día seleccionado
   const inicialDaysWithDates = getDaysWithDates(currentDate);
-  const [, daysWithDates, setDaysWithDates] = useLocalStorage('dayWithDates', inicialDaysWithDates);
-  
+  const [daysWithDates, setDaysWithDates] = useLocalStorage('dayWithDates', inicialDaysWithDates);  
 
   const selectDay = (e) => {
     setSelectedDay(e.target.title);
-    saveHabit(parsedHabits);
   };
+
+  // funcion para crear nuevos dias en localstorage cada vez que se le da click a las flechas de la navbar
+  const createNewDates = (newDate) => {
+    const newDaysWithDates = [...daysWithDates];
+    const today = new Date(newDate);
+    for (let i = 0; i < 7; i++) {
+      const day = new Date(today);
+      day.setDate(today.getDate() - today.getDay() + i);
+      const fullDay = day.toLocaleDateString()
+      const existe = daysWithDates.some((day) => day.fullDate === fullDay)
+      if (!existe) {
+        newDaysWithDates.push(
+          {
+            name: daysOfWeek[i],
+            fullDate: fullDay,
+            allCompleted: false
+          }
+        )
+      }     
+    }   
+    setDaysWithDates(newDaysWithDates)
+  }
 
   const onAddHabit = (text, jornada) => {
     var idHabit = (Math.random() * 10);
@@ -75,29 +94,26 @@ function App() {
         jornada: jornada,
         streak: 0,
         completed: false,
-    });
-    
+        date: selectedDay,
+    });    
     saveHabit(newHabits);    
   }
-
 
   const onCompleteHabit = (index) => {
     const newHabits = [...habits];
     newHabits[index].completed = !newHabits[index].completed;
     newHabits.sort( (i) => i.completed ? 1 : -1);
+    saveHabit(newHabits);
 
     const newLogros = [...logros];
-    const fullDate = new Date().toLocaleDateString();
-    if ((newHabits.every((habit) => habit.completed === true)) & 
-        (newLogros.every((logro) => logro.fullDate === fullDate))) {
+    const existe = logros.some((logro) => logro.date === selectedDay)
+    const selectedHabits = habits.filter((habit) => habit.date === selectedDay)
+    if ((selectedHabits.every((habit) => habit.completed === true)) & !existe) {
           newLogros.push({
-            date: fullDate
-          }) 
-    }
-    
-    saveHabit(newHabits);
+            date: selectedDay
+          })
+    }    
     saveLogros(newLogros);  
-    console.log(newLogros)
   }
 
   const onDeleteHabit = (key) => {
@@ -115,25 +131,22 @@ function App() {
   // Función para retroceder una semana
   const handlePreviousWeek = () => {
     const newDate = new Date(currentDate);
-    console.log(newDate)
     newDate.setDate(currentDate.getDate() - 7);
     setCurrentDate(newDate);
-    console.log(currentDate)
-    console.log(newDate)
+
+    createNewDates(newDate);
+    setSelectedDay(newDate.toLocaleDateString());
   };
 
-  console.log(typeof currentDate)
 
   // Función para avanzar una semana
   const handleNextWeek = () => {
     const newDate = new Date(currentDate);
-    const newNewDate = new Date()
-    newNewDate.setDate(newDate.getDate() + 7);
-    setCurrentDate(newNewDate);
-    console.log(typeof newNewDate)
-    console.log(newNewDate)
-    console.log(typeof currentDate)
-    console.log(currentDate)
+    newDate.setDate(currentDate.getDate() + 7);
+    setCurrentDate(newDate);
+    
+    createNewDates(newDate);
+    setSelectedDay(newDate.toLocaleDateString());
   };
 
   // Resaltar el día actual automáticamente
@@ -153,10 +166,7 @@ function App() {
         }
       })
     })    
-    console.log(daysWithDates)
   }, [logros])
-
-  console.log(daysWithDates)
 
   return (
     <BrowserRouter>
@@ -184,6 +194,7 @@ function App() {
             onCompleteHabit={onCompleteHabit}
             onDeleteHabit={onDeleteHabit}
             onEditHabit={onEditHabit}
+            currentDate={currentDate}
             daysWithDates={daysWithDates}
             efectCurrentDay={efectCurrentDay}
             handlePreviousWeek={handlePreviousWeek}

@@ -20,7 +20,8 @@ function HomePage (props) {
             habits={props.habits}
             selectDay={props.selectDay}
             selectedDay={props.selectedDay}
-            setSelectedDay={props.setSelectedDay}            
+            setSelectedDay={props.setSelectedDay}  
+            currentDate={props.currentDate}          
             daysWithDates={props.daysWithDates}
             efectCurrentDay={props.efectCurrentDay}
             handlePreviousWeek={props.handlePreviousWeek}
@@ -36,7 +37,7 @@ function HomePage (props) {
           onDeleteHabit={props.onDeleteHabit}
           onEditHabit={props.onEditHabit}
           setNewHabitValue={props.setNewHabitValue}
-
+          selectedDay={props.selectedDay}  
           />
         }
 
