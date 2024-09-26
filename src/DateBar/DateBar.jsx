@@ -8,6 +8,7 @@ const daysOfWeek = ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'];
 const DateBar = (props) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().toLocaleDateString()); // Estado para el día seleccionado
+ 
 
   // Función para obtener los días con las fechas correspondientes
   const getDaysWithDates = (date) => {
@@ -61,7 +62,7 @@ const DateBar = (props) => {
         }
       })
     })  
-    console.log(daysWithDates)
+    // console.log(daysWithDates)
   }, [props.logros])
 
   
@@ -73,7 +74,7 @@ const DateBar = (props) => {
       </button>
 
       {daysWithDates.map((item, index) => (
-        console.log(item),
+        // console.log(item),
         <div 
           title={[item.fullDate]}
           onClick={(e) => props.selectDay (e)}
