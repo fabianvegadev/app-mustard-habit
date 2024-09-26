@@ -20,7 +20,11 @@ function HomePage (props) {
             habits={props.habits}
             selectDay={props.selectDay}
             selectedDay={props.selectedDay}
-            setSelectedDay={props.setSelectedDay}
+            setSelectedDay={props.setSelectedDay}            
+            daysWithDates={props.daysWithDates}
+            efectCurrentDay={props.efectCurrentDay}
+            handlePreviousWeek={props.handlePreviousWeek}
+            handleNextWeek={props.handleNextWeek}          
           /> 
         </div> 
 
@@ -48,9 +52,8 @@ function HomePage (props) {
             />
           </Modal>  
         )}
-        <CreateHabitButton 
+        <CreateHabitButton
           setOpenModal={props.setOpenModal}
-          onAddHabit={(e) => props.onAddHabit(e.target.value)}
         />
       </div>
 

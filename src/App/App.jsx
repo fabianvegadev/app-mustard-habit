@@ -31,6 +31,22 @@ function useLocalStorage (itemName, initianValue) {
 const daysOfWeek = ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'];
 
 function App() {
+
+   // Función para obtener los días con las fechas correspondientes
+  const getDaysWithDates = (date) => {
+    const daysWithDates = [];
+    const today = new Date(date);
+    for (let i = 0; i < 7; i++) {
+      const day = new Date(today);
+      day.setDate(today.getDate() - today.getDay() + i);
+      daysWithDates.push({
+        name: daysOfWeek[i],
+        fullDate: day.toLocaleDateString(),
+        allCompleted: false
+      });
+    }   
+    return daysWithDates;
+  };  
   
   const [selectedDay, setSelectedDay] = useState(new Date().toLocaleDateString());
   const [parsedHabits, habits, saveHabit] = useLocalStorage(`${selectedDay}`, []); 
@@ -38,9 +54,11 @@ function App() {
   const [newHabitValue, setNewHabitValue] = useState('');  
   const [newHabitJornada, setNewHabitJornada] = useState('');
   const [, logros, saveLogros] = useLocalStorage ('logros', []);
-  const [daysWithDates, setDaysWithDates] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date()); // Estado para el movimiento de la navbar
   const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().toLocaleDateString()); // Estado para el día seleccionado
+  const inicialDaysWithDates = getDaysWithDates(currentDate);
+  const [, daysWithDates, setDaysWithDates] = useLocalStorage('dayWithDates', inicialDaysWithDates);
+  
 
   const selectDay = (e) => {
     setSelectedDay(e.target.title);
@@ -94,39 +112,28 @@ function App() {
     saveHabit(editHabits);
   }  
 
-   // Función para obtener los días con las fechas correspondientes
-  const getDaysWithDates = (date) => {
-    const daysWithDates = [];
-    const today = new Date(date);
-    for (let i = 0; i < 7; i++) {
-      const day = new Date(today);
-      day.setDate(today.getDate() - today.getDay() + i);
-      daysWithDates.push({
-        name: daysOfWeek[i],
-        fullDate: day.toLocaleDateString(),
-        allCompleted: false
-      });
-    }   
-    return daysWithDates;
-  };
-
-  const inicialDaysWithDates = getDaysWithDates(currentDate);
-
-  useEffect(() => {
-  })
-
   // Función para retroceder una semana
   const handlePreviousWeek = () => {
     const newDate = new Date(currentDate);
+    console.log(newDate)
     newDate.setDate(currentDate.getDate() - 7);
+    console.log(currentDate)
     setCurrentDate(newDate);
+    console.log(currentDate)
+    console.log(newDate)
+
   };
 
   // Función para avanzar una semana
   const handleNextWeek = () => {
     const newDate = new Date(currentDate);
-    newDate.setDate(currentDate.getDate() + 7);
-    setCurrentDate(newDate);
+    const newNewDate = new Date()
+    newNewDate.setDate(newDate.getDate() + 7);
+    setCurrentDate(newNewDate);
+    console.log(typeof newNewDate)
+    console.log(newNewDate)
+    console.log(typeof currentDate)
+    console.log(currentDate)
   };
 
   // Resaltar el día actual automáticamente
@@ -137,15 +144,15 @@ function App() {
 
   // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
   useEffect(() => {
-    const newDaysWithDates = [...inicialDaysWithDates]
+    const newDaysWithDates = [...daysWithDates]
     logros.map((logro) => {
       newDaysWithDates.map( (day) => {
         if (logro.date === day.fullDate) {
-          day.allCompleted = !day.allCompleted
+          day.allCompleted = true
+          setDaysWithDates(newDaysWithDates)  
         }
       })
-    })
-    setDaysWithDates(newDaysWithDates)  
+    })    
     console.log(daysWithDates)
   }, [logros])
 
@@ -162,6 +169,7 @@ function App() {
           <Route path='/' element={
             <HomePage 
             logros={logros}
+            saveLogros={saveLogros}
             selectDay={selectDay}
             selectedDay={selectedDay}
             setSelectedDay={setSelectedDay}
@@ -176,6 +184,10 @@ function App() {
             onCompleteHabit={onCompleteHabit}
             onDeleteHabit={onDeleteHabit}
             onEditHabit={onEditHabit}
+            daysWithDates={daysWithDates}
+            efectCurrentDay={efectCurrentDay}
+            handlePreviousWeek={handlePreviousWeek}
+            handleNextWeek={handleNextWeek}
           />}/>
 
           <Route path='/calendar' element={
