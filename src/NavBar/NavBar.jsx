@@ -21,7 +21,14 @@ function NavBar () {
                 </div>
 
                 <div className='UserContainer'>
+                    
+                    <div class= "face front">
+                        <img src="fabian.jpg."alt= ""></img>
+                    </div>
+                    <div class= "face back">
                     <FiUser className='UserIcon'/>
+                    
+        
                 </div>
         </nav>
     )
