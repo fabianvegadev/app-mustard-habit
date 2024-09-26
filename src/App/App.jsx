@@ -54,7 +54,7 @@ function App() {
   const [newHabitValue, setNewHabitValue] = useState('');  
   const [newHabitJornada, setNewHabitJornada] = useState('');
   const [, logros, saveLogros] = useLocalStorage ('logros', []);
-  const [currentDate, setCurrentDate] = useState(new Date()); // Estado para el movimiento de la navbar
+  const [currentDate, setCurrentDate] = useLocalStorage('currentDate', new Date()); // Estado para el movimiento de la navbar
   const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().toLocaleDateString()); // Estado para el día seleccionado
   const inicialDaysWithDates = getDaysWithDates(currentDate);
   const [, daysWithDates, setDaysWithDates] = useLocalStorage('dayWithDates', inicialDaysWithDates);
@@ -117,12 +117,12 @@ function App() {
     const newDate = new Date(currentDate);
     console.log(newDate)
     newDate.setDate(currentDate.getDate() - 7);
-    console.log(currentDate)
     setCurrentDate(newDate);
     console.log(currentDate)
     console.log(newDate)
-
   };
+
+  console.log(typeof currentDate)
 
   // Función para avanzar una semana
   const handleNextWeek = () => {
