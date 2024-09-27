@@ -31,9 +31,13 @@ const HabitCalendar = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '5px' }}>
+    <div className='generalContainer' style={{ textAlign: 'center', marginTop: '5px' }}>
 
-      <h2>Calendario de Tareas Completadas</h2>
+      <br></br>
+      <br></br>
+      <div className='titleContainer'>
+        <h2>Calendario de logros</h2>
+      </div>
 
       {/* Contenedor del calendario */} 
       <div> 
@@ -51,15 +55,7 @@ const HabitCalendar = () => {
       </div>
       
 
-      {/* Botón para marcar como completado */}
-      <button
-        onClick={marcarComoCompletado}
-        style={{ marginTop: '8px', padding: '5px 9px', fontSize: '9px' }}
-        disabled={!selectedDate}
-      >
-        Marcar como completado
-      </button>
-
+      
     </div>
   );
 };

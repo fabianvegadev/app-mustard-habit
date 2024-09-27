@@ -23,6 +23,7 @@ function NavBar () {
                     
                     <FiUser className='UserIcon'/>       
                 </div>
+
         </nav>
     )
 }

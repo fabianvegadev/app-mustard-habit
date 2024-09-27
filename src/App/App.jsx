@@ -47,14 +47,14 @@ function App() {
     return daysWithDates;
   };  
   
-  const [selectedDay, setSelectedDay] = useState(new Date().toLocaleDateString());
   const [habits, saveHabit] = useLocalStorage('habits', []); 
   const [openModal, setOpenModal] = useState (false);  
   const [newHabitValue, setNewHabitValue] = useState('');  
   const [newHabitJornada, setNewHabitJornada] = useState('');
   const [logros, saveLogros] = useLocalStorage ('logros', []);
-  const [currentDate, setCurrentDate] = useState(new Date()); // Estado para el movimiento de la navbar
-  const [efectCurrentDay, setEfectCurrentDay] = useState(new Date().toLocaleDateString()); // Estado para el día seleccionado
+  const [currentDate, setCurrentDate] = useState(new Date())
+  const [changeWeek, setChangeWeek] = useState(new Date()); // Estado para el movimiento de la datebar
+  const [selectedDay, setSelectedDay] = useState(new Date().toLocaleDateString());
   const inicialDaysWithDates = getDaysWithDates(currentDate);
   const [daysWithDates, setDaysWithDates] = useLocalStorage('dayWithDates', inicialDaysWithDates);  
 
@@ -106,7 +106,6 @@ function App() {
     const newHabits = [...habits];
     newHabits[index].completed = !newHabits[index].completed;
     newHabits.sort( (i) => i.completed ? 1 : -1);
-    saveHabit(newHabits);
 
     const newLogros = [...logros];
     const existe = logros.some((logro) => logro.date === selectedDay)
@@ -115,11 +114,13 @@ function App() {
           newLogros.push({
             date: selectedDay
           })
-    } else {const indexABorrar = newLogros.findIndex((logro) => logro.date === selectedDay)
+    } else if (existe) {
+      const indexABorrar = newLogros.findIndex((logro) => logro.date === selectedDay)
       newLogros.splice(indexABorrar, 1)
     }   
-    console.log(newLogros)
-    saveLogros(newLogros);  
+    saveLogros(newLogros); 
+
+    saveHabit(newHabits);
   }
   console.log(logros)
 
@@ -137,36 +138,54 @@ function App() {
 
   // Función para retroceder una semana
   const handlePreviousWeek = () => {
-    const newDate = new Date(currentDate);
-    newDate.setDate(currentDate.getDate() - 7);
-    setCurrentDate(newDate);
+    const newDate = new Date(changeWeek);
+    newDate.setDate(changeWeek.getDate() - 7);
+    setChangeWeek(newDate);
 
     createNewDates(newDate);
-    setSelectedDay(newDate.toLocaleDateString());
   };
 
 
   // Función para avanzar una semana
   const handleNextWeek = () => {
-    const newDate = new Date(currentDate);
-    newDate.setDate(currentDate.getDate() + 7);
-    setCurrentDate(newDate);
+    const newDate = new Date(changeWeek);
+    newDate.setDate(changeWeek.getDate() + 7);
+    setChangeWeek(newDate);
     
     createNewDates(newDate);
-    setSelectedDay(newDate.toLocaleDateString());
   };
 
-  // Resaltar el día actual automáticamente
+  // Repetir habitos del dia anterior inicializados en false
   useEffect(() => {
-    const today = new Date();
-    setEfectCurrentDay(today.toLocaleDateString()); // Actualizar el día seleccionado con el día actual
+    const today = new Date()
+    today.setDate(today.getDate() - 1)
+    const todayFull = today.toLocaleDateString()
+    const newHabits = [...habits]
+    habits.map((habit) => {
+      if (habit.date === todayFull) {
+        newHabits.push({
+          key: habit.id,
+          text: habit.text,
+          jornada: habit.jornada,
+          streak: 0,
+          completed: false,
+          date: todayFull,
+      });
+      }
+    })
   }, [currentDate]); 
 
   // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
-  useEffect(() => {
-    const newDaysWithDates = [...daysWithDates]    
-    logros.map(() => {
-      newDaysWithDates.map( (day) => {
+  useEffect(() => {     
+    const newDaysWithDates = [...daysWithDates]  
+    console.log('SIIIIIIIIIIIIIIIIIIIIIIIIIIIII')  
+    console.log(logros)
+    newDaysWithDates.map( (day) => {
+      if (logros.length === 0 ){
+        console.log(logros)  
+        day.allCompleted = false
+      }
+      logros.map(() => {
         const cierto = logros.some( (logro) => logro.date === day.fullDate)
         if (cierto) {
           day.allCompleted = true
@@ -176,8 +195,8 @@ function App() {
           setDaysWithDates(newDaysWithDates) 
         }
       })
-    })    
-  }, [logros])
+    })
+  }, [logros, habits])    
 
   return (
     <BrowserRouter>
@@ -206,8 +225,8 @@ function App() {
             onDeleteHabit={onDeleteHabit}
             onEditHabit={onEditHabit}
             currentDate={currentDate}
+            changeWeek={changeWeek}
             daysWithDates={daysWithDates}
-            efectCurrentDay={efectCurrentDay}
             handlePreviousWeek={handlePreviousWeek}
             handleNextWeek={handleNextWeek}
           />}/>

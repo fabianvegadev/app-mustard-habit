@@ -9,7 +9,7 @@
     box-shadow: 0px 2px 12px #A5A5A5;
     border-style: solid;
     border-width: thin;
-    border-color: black;
+    border-color: rgba(40, 40, 40, 0.85);
     border-radius: 50%;
     cursor: pointer;
     font-size: 50px;
@@ -29,6 +29,7 @@
 }
 
 .CreateHabitButton:hover {
+    background-color: rgba(216, 189, 101, 0.7);
     transform: rotate(180deg);
     transition: 1.2;
 }

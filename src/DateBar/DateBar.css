@@ -19,7 +19,7 @@
   border-radius: 4px;
   padding: 0px 4px 0px 4px;
   position: absolute;
-  top: 12px;
+  top: 17px;
   left: 12px;
 }
 
@@ -28,7 +28,7 @@
   border-radius: 4px;
   padding: 0px 4px 0px 4px;
   position: absolute;
-  top: 12px;
+  top: 17px;
   right: 12px;
 }
 
@@ -40,6 +40,10 @@
   cursor: pointer;display: flex;
   align-items: center;
 }
+
+.arrowContainer button:hover {
+  color: #d5b143;
+} 
 
 .datebarCenterContainer {
   display: flex;  

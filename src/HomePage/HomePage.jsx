@@ -23,7 +23,9 @@ function HomePage (props) {
             daysWithDates={props.daysWithDates}
             handlePreviousWeek={props.handlePreviousWeek}
             handleNextWeek={props.handleNextWeek} 
-            currentDate={props.currentDate}         
+            currentDate={props.currentDate}    
+            changeWeek={props.changeWeek}
+
           /> 
         </div> 
 
