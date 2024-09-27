@@ -1,6 +1,6 @@
-# MustadHabit
+# MustardHabit
 
-MustadHabit es una aplicación web desarrollada con **React** para el control de hábitos diarios. Con esta aplicación, los usuarios pueden crear, seguir y registrar sus hábitos a lo largo del tiempo, ayudando a fomentar la consistencia y la mejora personal.
+MustardHabit es una aplicación web desarrollada con **React** para el control de hábitos diarios. Con esta aplicación, los usuarios pueden crear, seguir y registrar sus hábitos a lo largo del tiempo, ayudando a fomentar la consistencia y la mejora personal.
 
 ## Características
 
