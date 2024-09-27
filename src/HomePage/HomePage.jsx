@@ -19,13 +19,11 @@ function HomePage (props) {
             logros={props.logros}
             habits={props.habits}
             selectDay={props.selectDay}
-            selectedDay={props.selectedDay}
-            setSelectedDay={props.setSelectedDay}  
-            currentDate={props.currentDate}          
+            selectedDay={props.selectedDay} 
             daysWithDates={props.daysWithDates}
-            efectCurrentDay={props.efectCurrentDay}
             handlePreviousWeek={props.handlePreviousWeek}
-            handleNextWeek={props.handleNextWeek}          
+            handleNextWeek={props.handleNextWeek} 
+            currentDate={props.currentDate}         
           /> 
         </div> 
 

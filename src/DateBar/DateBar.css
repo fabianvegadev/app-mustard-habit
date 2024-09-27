@@ -1,85 +1,97 @@
 /* DateBar.css */
-.date-bar-container {
+.datebarContainer {
   background-color: transparent;
   display: flex;
   justify-content: space-evenly;
-  padding: 16px 8px 8px 8px;
-}
-
-.date-bar-day {
-  width: 40px; /* Ajusta el tamaño del círculo */
-  height: 40px; /* Ajusta el tamaño del círculo */
-  border-radius: 50%;
-  border-style: solid;
-  border-color: white;
-  border-width: 2px;
-  margin: 5px; /* Espacio entre círculos */
-  min-width: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-weight: bold; /* Aplica negrita a los nombres de los días */
-  display: flex;
-  flex-direction: column; /* Cambia a columna */
-  align-items: center; /* Centra el contenido */
-  justify-content: center;
+  padding: 16px 16px 8px 16px;
   position: relative;
 }
 
-.date-bar-day:hover {
-  background-color: #d0d0d0;
-  
+.arrowContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 9px;
 }
 
-.date-bar-button:hover {
-    color: #d5b143; /* Cambio de color al pasar el ratón */
-  }
+.month {
+  background-color: rgba(250,250,250,0.7);
+  border-radius: 4px;
+  padding: 0px 4px 0px 4px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
 
-.date-bar-button {
-  background-color: transparent; /* Fondo transparente para que resalten los iconos */
+.year {
+  background-color: rgba(250,250,250,0.7);
+  border-radius: 4px;
+  padding: 0px 4px 0px 4px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.arrowContainer button {
+  background-color: transparent;
   border: none;
   color: black;
   font-size: 30px; /* Tamaño del icono */
   cursor: pointer;display: flex;
   align-items: center;
 }
-      
-.date-bar-button:hover {
+
+.datebarCenterContainer {
+  display: flex;  
+  justify-content: space-around;
+  width: 100%;
+  padding: 0 16px 0 16px;
+}
+
+.dayContainer {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: space-between;
+}
+
+.datebarButton:hover {
   color: #d5b143; /* Cambio de color al pasar el ratón */
 }
 
-.date-bar-day.currentDay {
-  background-color: rgb(60, 60, 60, 0.6); /* Color de fondo para el día seleccionado */
-  color: white; /* Color del texto */
+.dayContainer button {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(220,220,220,0.5);
+  border-radius: 50%;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
+  margin:  12px 4px 4px 4px;
+  min-width: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
   font-weight: bold;
+  position: relative;
 }
 
-.date-bar-day.selectedDay {
-  background-color: rgba(216, 189, 101, 0.7); /* Color de fondo para el día seleccionado */
-  color: white; /* Color del texto */
-  font-weight: bold;
+.dayContainer .selectedDay {
+  background-color: rgba(216, 189, 101, 0.7);
+}
+
+.dayContainer .allCompleted {
+  background-color: rgba(41, 187, 90, 0.658);  
 }
 
 .IconCheck {
-    background-color: green;
-    color: white;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: -4px;
-    right: 0px;
-}
-
-
-.text-date {
-  height: 16px;
+  color: white;
+  border-radius: 50%;
+  background-color: green;
   display: flex;
   align-items: center;
-}
-
-.felicitaciones {
-  background-color: rgba(41, 187, 90, 0.658);
-  
+  justify-content: center;
+  position: absolute;
+  top: -4px;
+  right: 0px;
+  transition: 3s;
 }

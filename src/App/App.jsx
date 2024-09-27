@@ -60,7 +60,10 @@ function App() {
 
   const selectDay = (e) => {
     setSelectedDay(e.target.title);
+    console.log(e.target.title)
   };
+  console.log(selectedDay)
+  
 
   // funcion para crear nuevos dias en localstorage cada vez que se le da click a las flechas de la navbar
   const createNewDates = (newDate) => {
@@ -112,9 +115,13 @@ function App() {
           newLogros.push({
             date: selectedDay
           })
-    }    
+    } else {const indexABorrar = newLogros.findIndex((logro) => logro.date === selectedDay)
+      newLogros.splice(indexABorrar, 1)
+    }   
+    console.log(newLogros)
     saveLogros(newLogros);  
   }
+  console.log(logros)
 
   const onDeleteHabit = (key) => {
     const newHabits = [...habits];
@@ -157,12 +164,16 @@ function App() {
 
   // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
   useEffect(() => {
-    const newDaysWithDates = [...daysWithDates]
-    logros.map((logro) => {
+    const newDaysWithDates = [...daysWithDates]    
+    logros.map(() => {
       newDaysWithDates.map( (day) => {
-        if (logro.date === day.fullDate) {
+        const cierto = logros.some( (logro) => logro.date === day.fullDate)
+        if (cierto) {
           day.allCompleted = true
           setDaysWithDates(newDaysWithDates)  
+        } else {
+          day.allCompleted = false
+          setDaysWithDates(newDaysWithDates) 
         }
       })
     })    
