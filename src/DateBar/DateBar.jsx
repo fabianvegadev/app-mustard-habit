@@ -18,7 +18,6 @@ const DateBar = (props) => {
       var year = day.getFullYear()
       const fullDay = day.toLocaleDateString()
       props.daysWithDates.map((d) => {
-        console.log(d.allCompleted)
         if (fullDay === d.fullDate) {
           showDaysWithDates.push(
             {

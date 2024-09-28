@@ -61,9 +61,7 @@ function App() {
   const selectDay = (e) => {
     setSelectedDay(e.target.title);
     console.log(e.target.title)
-  };
-  console.log(selectedDay)
-  
+  };  
 
   // funcion para crear nuevos dias en localstorage cada vez que se le da click a las flechas de la navbar
   const createNewDates = (newDate) => {
@@ -122,7 +120,6 @@ function App() {
 
     saveHabit(newHabits);
   }
-  console.log(logros)
 
   const onDeleteHabit = (key) => {
     const newHabits = [...habits];
@@ -178,8 +175,6 @@ function App() {
   // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
   useEffect(() => {     
     const newDaysWithDates = [...daysWithDates]  
-    console.log('SIIIIIIIIIIIIIIIIIIIIIIIIIIIII')  
-    console.log(logros)
     newDaysWithDates.map( (day) => {
       if (logros.length === 0 ){
         console.log(logros)  
