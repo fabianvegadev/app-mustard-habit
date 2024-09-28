@@ -16,6 +16,8 @@ MustardHabit es una aplicación web desarrollada con **React** para el control d
 - **CSS**: Para la personalización del diseño y efectos visuales.
 - **React Icons**: Biblioteca de iconos utilizados en la aplicación.
 - **React Calendar**: Biblioteca para implementar un calendario que mostrará todos los logros.
+- **React router dom**: Biblioteca para implementar rutas en la aplicacion web.
+- **React dom**: Bibliote implementada para el correcto uso de portales y rutas con React.
 
 ## Uso
 
