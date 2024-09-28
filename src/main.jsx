@@ -5,6 +5,7 @@ import './Animacion/Animacion.css';
 import App from './App/App';
 import './index.css';
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ContainerAnimaciones/>
