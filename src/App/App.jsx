@@ -93,7 +93,6 @@ function App() {
         key: idHabit,
         text: habitText,
         jornada: jornada,
-        streak: 0,
         completed: false,
         date: selectedDay,
     });    
@@ -117,9 +116,9 @@ function App() {
       newLogros.splice(indexABorrar, 1)
     }   
     saveLogros(newLogros); 
-
     saveHabit(newHabits);
   }
+  console.log(logros)
 
   const onDeleteHabit = (key) => {
     const newHabits = [...habits];
@@ -175,6 +174,7 @@ function App() {
   // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
   useEffect(() => {     
     const newDaysWithDates = [...daysWithDates]  
+    console.log(logros)
     newDaysWithDates.map( (day) => {
       if (logros.length === 0 ){
         console.log(logros)  

@@ -12,12 +12,14 @@ const DateBar = (props) => {
     const showDaysWithDates = [ ];
     const today = new Date(date);
     for (let i = 0; i < 7; i++) {
+      
       const day = new Date(today);
       day.setDate(today.getDate() - today.getDay() + i);      
       var month = monthsOfYear[day.getMonth()]
       var year = day.getFullYear()
       const fullDay = day.toLocaleDateString()
       props.daysWithDates.map((d) => {
+        console.log(d.allCompleted)
         if (fullDay === d.fullDate) {
           showDaysWithDates.push(
             {
@@ -59,10 +61,10 @@ const DateBar = (props) => {
               <button                
                 title={[item.fullDate]}
                 onClick={(e) => props.selectDay (e)}
-                className={`${(item.allCompleted == true) & (props.habits.length != 0) && 'allCompleted'}
+                className={`${(item.allCompleted == true) && (props.habits.length != 0) && 'allCompleted'}
                             ${(props.selectedDay === item.fullDate) && 'selectedDay'}`}>
                 {item.name}
-                {(item.allCompleted === true & props.habits.length != 0) ? <FaRegCheckCircle className='IconCheck' size={16}/> : <div></div>}          
+                {(item.allCompleted === true && props.habits.length != 0) ? <FaRegCheckCircle className='IconCheck' size={16}/> : <div></div>}          
               </button>
 
             </div>
