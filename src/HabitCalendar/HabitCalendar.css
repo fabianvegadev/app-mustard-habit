@@ -38,7 +38,7 @@
 }
 
 .completado{
-    background-color: blue !important;
+    background-color: rgb(0, 0, 0) !important;
 }
 
 .react-calendar__tile--now {
