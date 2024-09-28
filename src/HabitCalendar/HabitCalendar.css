@@ -24,7 +24,6 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    max-width: 560px;
 }
 
 .react-calendar button {
