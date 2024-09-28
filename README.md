@@ -26,7 +26,8 @@ MustardHabit es una aplicación web desarrollada con **React** para el control d
 
 ## Estructura del proyecto
 
-mustard-habit-project-talento/                                                                                                           ├── public/
+mustard-habit-project-talento/                                                                                                           
+├── public/
 ├── src/
 │   ├── Animacion/        # Componete de animacion que se usa en el fondo de la aplicacion.
 │   │   ├──Animacion.css   
