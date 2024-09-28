@@ -29,49 +29,49 @@ MustardHabit es una aplicación web desarrollada con **React** para el control d
 - mustard-habit-project-talento/
 - ├── public/
 - ├── src/
-- │   ├── Animacion/        # Componete de animacion que se usa en el fondo de la aplicacion.
+- │   ├── Animacion/                 # Componete de animacion que se usa en el fondo de la aplicacion.
 - │   │   ├──Animacion.css   
 - │   │   ├──Animacion.jsx
 - │   │   ├──ContainerAnimaciones.jsx
-- │   ├── App/              # Componente principal de la aplicacion.
+- │   ├── App/                       # Componente principal de la aplicacion.
 - │   │   ├──App.css   
 - │   │   ├──App.jsx
-- │   ├── CreateHabitButton/# Componente del botón para agregar nuevo habitos.   
+- │   ├── CreateHabitButton/         # Componente del botón para agregar nuevo habitos.   
 - │   │   ├──CreateHabitButton.css   
 - │   │   ├──CreateHabitButton.jsx
-- │   ├── CreateHabitForm/  # Componente del formulario para crear nuevos hábitos.
+- │   ├── CreateHabitForm/           # Componente del formulario para crear nuevos hábitos.
 - │   │   ├──CreateHabitForm.css
 - │   │   ├──CreateHabitForm.jsx
-- │   ├── DateBar/          # Componente del barra que contiene todas las fechas y el registro de logros en la homepage.
+- │   ├── DateBar/                   # Componente del barra que contiene todas las fechas y el registro de logros en la homepage.
 - │   │   ├──DateBar.css
 - │   │   ├──DateBar.jsx
-- │   ├── EmptyHabits/      # Componente usado para mostrar el mensaje "Crea tu primer habito" cuando el usuario es nuevo.
+- │   ├── EmptyHabits/               # Componente usado para mostrar el mensaje "Crea tu primer habito" cuando el usuario es nuevo.
 - │   │   ├──EmptyHabits.css
 - │   │   ├──EmptyHabits.jsx
-- │   ├── HabitCalendar/    # Componente usado para mostrar un registro de los hábitos en forma de calendario (En desarrollo).
+- │   ├── HabitCalendar/             # Componente usado para mostrar un registro de los hábitos en forma de calendario (En desarrollo).
 - │   │   ├──HabitCalendar.css   
 - │   │   ├──HabitCalendar.jsx
-- │   ├── HabitItem/        # Componente para cada item que contiene la informacion del hábito.
+- │   ├── HabitItem/                 # Componente para cada item que contiene la informacion del hábito.
 - │   │   ├──fondoIsEditing.png
 - │   │   ├──HabitItem.css   
 - │   │   ├──HabitItem.jsx
-- │   ├── HabitList/        # Componente que contiene la lista de habitos a seguir.
+- │   ├── HabitList/                 # Componente que contiene la lista de habitos a seguir.
 - │   │   ├──HabitList.css   
 - │   │   ├──HabitList.jsx
-- │   ├── HomePage/         # Este componente contiene todo lo relacionado a la pagina principal.
+- │   ├── HomePage/                  # Este componente contiene todo lo relacionado a la pagina principal.
 - │   │   ├──HomePage.css   
 - │   │   ├──HomePage.jsx
-- │   ├── Modal/            # Componete creado para el uso de React portals.
+- │   ├── Modal/                     # Componete creado para el uso de React portals.
 - │   │   ├──Modal.css
 - │   │   ├──Modal.jsx
-- │   ├── NavBar/           # Componente para la barra de navegacion que permanece fija en la parte superior
+- │   ├── NavBar/                    # Componente para la barra de navegacion que permanece fija en la parte superior
 - │   │   ├──LogoMustardHabit.png
 - │   │   ├──NavBar.css
 - │   │   ├──NavBar.jsx
-- │   ├── fondo.png         # Imagen usada en el fondo de toda la app
-- │   ├── index.css         # Archivo css del root
-- │   ├── main.jsx          # Archivo principal donde se plasma la app
-- ├── index.html            # Archivo html principal
+- │   ├── fondo.png                  # Imagen usada en el fondo de toda la app
+- │   ├── index.css                  # Archivo css del root
+- │   ├── main.jsx                   # Archivo principal donde se plasma la app
+- ├── index.html                     # Archivo html principal
 - ├── package-lock.json
 - ├── package.json
 - └── README.md
