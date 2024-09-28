@@ -1,6 +1,4 @@
-# MustardHabit
-
-<img src="./src/NavBar/LogoMustardHabit.png">
+<img src="./src/NavBar/LogoMustardHabit.png"> # MustardHabit
 
 MustardHabit es una aplicación web desarrollada con **React** para el control de hábitos diarios. Con esta aplicación, los usuarios pueden crear, seguir y registrar sus hábitos a lo largo del tiempo, ayudando a fomentar la consistencia y la mejora personal.
 
