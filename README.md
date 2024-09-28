@@ -23,3 +23,4 @@ MustardHabit es una aplicación web desarrollada con **React** para el control d
 - **Marcar un hábito como completado**: Marca el hábito una vez que lo hayas cumplido ese día.
 - **Seguimiento de días anteriores**: Usa las flechas para navegar entre los días de la semana y ver el progreso anterior.
 - **Visualización de logros**: Un icono de verificación aparecerá en los días en los que todos los hábitos fueron completados.
+
