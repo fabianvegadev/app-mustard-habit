@@ -5,7 +5,7 @@ import './HabitCalendar.css';
 
 const HabitCalendar = () => {
   const [selectedDate, setSelectedDate] = useState([]); // Fecha seleccionada en el calendario
-  const [completedDates, setCompletedDates] = useState([]); // Fechas completadas
+  const [completedDates] = useState([]); // Fechas completadas
 
   // Manejar el cambio de fecha seleccionada
   /* const onDateChange = (date) => {
@@ -21,13 +21,6 @@ const HabitCalendar = () => {
       }
       
     });
-  };
-
-  // Marcar la fecha seleccionada como completada
-  const marcarComoCompletado = () => {
-    if (selectedDate && !completedDates.includes(selectedDate.toDateString())) {
-      setCompletedDates([...completedDates, selectedDate.toDateString()]);
-    }
   };
 
   return (
@@ -49,17 +42,6 @@ const HabitCalendar = () => {
           }}
         />
       </div>
-      
-
-      {/* Botón para marcar como completado */}
-      <button
-        onClick={marcarComoCompletado}
-        style={{ marginTop: '8px', padding: '5px 9px', fontSize: '9px' }}
-        disabled={!selectedDate}
-      >
-        Marcar como completado
-      </button>
-
     </div>
   );
 };
