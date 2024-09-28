@@ -1,10 +1,9 @@
 :root {
   font-family: system-ui;
   background-image: url("./fondo.jpg");
-  background-position: inherit;
+  background-position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
-  position: absolute;
 }
 
 * {

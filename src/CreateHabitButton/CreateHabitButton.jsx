@@ -1,7 +1,7 @@
 import './CreateHabitButton.css';
 
 function CreateHabitButton ({setOpenModal}) {
-
+    
     return (
         <div className="CreateHabitButtonContainer">
             <button 

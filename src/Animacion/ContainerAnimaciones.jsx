@@ -5,7 +5,7 @@ function ContainerAnimaciones () {
 
     const Animaciones = []
     for (let i = 0; i < 200; i++) {
-        Animaciones.push(<Animacion />)            
+        Animaciones.push(<Animacion key={`a-${i}`}/>)            
     }
     return ( 
         <div className="container">

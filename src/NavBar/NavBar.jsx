@@ -20,9 +20,10 @@ function NavBar () {
                     <FiBarChart className='GraficsIcon' onClick={ () => navigate('/calendar') }/>
 
                     <FiMoreVertical className='MenuIcon'/>
-
-                    <FiUser className='UserIcon'/>
+                    
+                    <FiUser className='UserIcon'/>       
                 </div>
+
         </nav>
     )
 }

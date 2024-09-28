@@ -1,5 +1,5 @@
 import './EmptyHabits.css';
-import { FiArrowDownRight } from "react-icons/fi";
+import { RiArrowDownDoubleFill } from "react-icons/ri";
 
 function EmptyHabits ({openModal}) {
 
@@ -8,10 +8,6 @@ function EmptyHabits ({openModal}) {
             <h2>
                 Crea tu primer hábito
             </h2>
-
-            <div className='ArrowContainer'>
-                {!openModal && <FiArrowDownRight className='ArrowCreateHabit'/>}                    
-            </div>
         </div>
     )
 }

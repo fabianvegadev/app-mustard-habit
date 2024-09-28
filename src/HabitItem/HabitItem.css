@@ -1,28 +1,70 @@
 .habitItem {
     background-color: white;
-    height: 48px;
+    height: 48px auto;
     border-radius: 16px;
-    margin: 20px 80px 0px 80px; 
+    margin: 20px 60px 0px 60px; 
     cursor: pointer;
+    position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 
 }
 
 .habitItem--completed {
-    background: linear-gradient(90deg,#ffffff,#fffb29,#f4aa34);
-    transition: background-color 1s;
+    background: linear-gradient(90deg,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#dcb143);
+}
+
+.editingItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 16px;
+    background-image: url("./fondoIsEditing.png");
+    background-position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inputsContainer  {
+    display: flex;
+    flex-direction: row;
+    margin: 16px;
+}
+
+.imputsContainer > textarea {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.inputsContainer > select {
+    margin-left: 16px;
+    margin-top: 0;
+}
+
+.iconsContainer {
+    display: flex;
+    position: absolute;
+    right: 38px;
+    bottom: 17px;
 }
 
 #textHabit {
-    margin: 16px 0 16px 32px;
+    margin: 8px 0 8px 8px;
     width: calc(100% - 124px);
     font-size: 18px;
     display: flex;
-    align-items: center;
-    text-align: justify;
+    flex-direction: column;
+    color: rgba(60, 60, 60, 1);
+    font-weight: 400;    
 }
+
+#textHabit > small {
+    color: rgba(80, 80, 80, 0.8);
+    font-size: 75%;
+}
+
 
 .buttonCheck {
     background-color: transparent;
@@ -30,10 +72,12 @@
     font-size: 20px;
     border-radius: 50%;
     border-color: #F6E96B;
+    margin-left: 8px;
     cursor: pointer;
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: 28px;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -43,24 +87,62 @@
     transition: border-color 1s;
 }
 
-.buttonSettings {
+.buttonDelete, .buttonEdit, .iconCheckEdit, .iconCancelEdit {
     background-color: transparent;
     font-weight: bold;
     font-size: 20px;
     border: none;
-    height: 32px;
-    width: 32px;
+    height: 16px;
+    width: 16px;
     cursor: pointer;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.buttonSettings--complete {
+.buttonDelete, .iconCancelEdit {
+    margin: 0 8px 0 12px;
+}
+
+.buttonEdit, .iconCheckEdit {
+    margin-left: 16px;
+}
+
+.buttonDelete--complete {
     color: black;
 }
 
-.buttonSettings:hover {
-    transform: rotate(120deg);
+.buttonDelete:hover {
+    transform: rotate(180deg);
     transition: transform 0.7s;
+}
+
+.iconCancelEdit {
+    color: rgb(255, 0, 0);
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.iconCheckEdit {
+    color: #41B06E;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;    
+    background-color: white;
+}
+
+.iconStar {    
+    background-color: gold;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -4px;
+    right: -4px;
 }
 

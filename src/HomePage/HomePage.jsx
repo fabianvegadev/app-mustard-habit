@@ -8,27 +8,38 @@ import { Modal } from "../Modal/Modal";
 import "./HomePage.css";
 
 function HomePage (props) {
+
+    
+
     return (
 
         <div className='HomePage-container'>        
         <div>
-          <DateBar/> 
+          <DateBar 
+            logros={props.logros}
+            habits={props.habits}
+            selectDay={props.selectDay}
+            selectedDay={props.selectedDay} 
+            daysWithDates={props.daysWithDates}
+            handlePreviousWeek={props.handlePreviousWeek}
+            handleNextWeek={props.handleNextWeek} 
+            currentDate={props.currentDate}    
+            changeWeek={props.changeWeek}
+
+          /> 
         </div> 
 
-        {props.habits.length === 0 && <EmptyHabits openModal={props.openModal}/>}
-        
-        {props.habits.length != 0 && (
+        {props.habits.length === 0 ? 
+          <EmptyHabits openModal={props.openModal}/> :
           <HabitList
           habits={props.habits} 
           onCompleteHabit={props.onCompleteHabit}
           onDeleteHabit={props.onDeleteHabit}
-        />
-        )}
-
-        <CreateHabitButton 
-          setOpenModal={props.setOpenModal}
-          onAddHabit={(e) => props.onAddHabit(e.target.value)}
-        />
+          onEditHabit={props.onEditHabit}
+          setNewHabitValue={props.setNewHabitValue}
+          selectedDay={props.selectedDay}  
+          />
+        }
 
         {props.openModal && (
           <Modal>
@@ -37,9 +48,14 @@ function HomePage (props) {
               onAddHabit={props.onAddHabit}
               newHabitValue={props.newHabitValue}
               setNewHabitValue={props.setNewHabitValue}
+              newHabitJornada={props.newHabitJornada}
+              setNewHabitJornada={props.setNewHabitJornada}
             />
           </Modal>  
         )}
+        <CreateHabitButton
+          setOpenModal={props.setOpenModal}
+        />
       </div>
 
     )

@@ -3,10 +3,12 @@ form {
     max-width: 300px;
     background-color: #fff;
     padding: 33px 40px;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: fixed;
     z-index: 2;
   }
   
@@ -21,8 +23,8 @@ form {
   textarea {
     background-color: #F9FBFC;
     border: 2px solid #202329;
-    border-radius: 2px;
-    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+    border-radius: 4px;
+    box-shadow: 0px 5px 50px #A5A5A5;
     color: #1E1E1F;
     font-size: 20px;
     text-align: center;
@@ -38,7 +40,19 @@ form {
   }
   
   textarea:focus {
-    outline-color: #F6E96B;
+    outline-color: rgba(216, 189, 101, 0.7);
+  }
+
+  select {
+    height: 32px;
+    width: 200px;
+    font-size: 1rem;
+    border: 2px solid #202329;
+    border-radius: 4px;
+    margin-top: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    text-align: center;
   }
   
   .HabitForm-buttonContainer {
@@ -54,7 +68,7 @@ form {
     display: inline-block;
     font-size: 20px;
     color: #202329;
-    border-color: #F6E96B;
+    border-color: rgba(216, 189, 101, 0.7);
     font-weight: 400;
     width: 120px;
     height: 48px;
@@ -71,7 +85,7 @@ form {
 
   .HabitForm-button--add {
     background: #41B06E;
-    box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
+    box-shadow: 0px 5px 25px #A5A5A5;
   }
   
   
