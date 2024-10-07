@@ -11,15 +11,13 @@ const DateBar = (props) => {
   const getShowDaysWithDates = (date) => {
     const showDaysWithDates = [ ];
     const today = new Date(date);
-    for (let i = 0; i < 7; i++) {
-      
+    for (let i = 0; i < 7; i++) {      
       const day = new Date(today);
       day.setDate(today.getDate() - today.getDay() + i);      
       var month = monthsOfYear[day.getMonth()]
       var year = day.getFullYear()
       const fullDay = day.toLocaleDateString()
       props.daysWithDates.map((d) => {
-        console.log(d.allCompleted)
         if (fullDay === d.fullDate) {
           showDaysWithDates.push(
             {

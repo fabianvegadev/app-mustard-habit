@@ -13,7 +13,7 @@ function NavBar () {
         <nav className='NavBar'>            
                 <div className='LogoContainer' onClick={() => navigate('/')}>
                     <img src={Logo} alt='Logo' className='Logo'/>
-                    <p>MustardHabit</p>                      
+                    <b>MustardHabit</b>                      
                 </div>
 
                 <div className='GraficsContainer'>

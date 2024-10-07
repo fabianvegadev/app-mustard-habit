@@ -55,6 +55,7 @@ function HomePage (props) {
         )}
         <CreateHabitButton
           setOpenModal={props.setOpenModal}
+          setCurrentDate={props.setCurrentDate}
         />
       </div>
 
