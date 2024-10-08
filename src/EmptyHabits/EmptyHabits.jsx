@@ -1,7 +1,6 @@
 import './EmptyHabits.css';
-import { RiArrowDownDoubleFill } from "react-icons/ri";
 
-function EmptyHabits ({openModal}) {
+function EmptyHabits () {
 
     return (
         <div className='MessageContainer'>

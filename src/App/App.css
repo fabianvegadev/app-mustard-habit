@@ -1,5 +1,5 @@
 .NavigationContainer {
-  height: 90%;
+  height: calc(100% - 80px);
   width: 560px;
   position:fixed;
   top: 50%;
