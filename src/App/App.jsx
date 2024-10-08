@@ -7,10 +7,9 @@ import './App.css'
 
 function useLocalStorage (itemName, initianValue) {
     
-  const localStorageItem = localStorage.getItem(itemName);
-  
+  const localStorageItem = localStorage.getItem(itemName);  
   let parsedItem;
-  
+
   if (localStorageItem) {
     parsedItem = JSON.parse(localStorageItem);  
   } else {
@@ -18,19 +17,16 @@ function useLocalStorage (itemName, initianValue) {
     parsedItem = initianValue;
   }  
   
-  const [item, setItem] = useState(parsedItem);  
-  
+  const [item, setItem] = useState(parsedItem);    
   const saveItem = (newItem) => {
       localStorage.setItem(itemName, JSON.stringify(newItem));
       setItem(newItem);
   }
-
   return [item, saveItem];
 }
 const daysOfWeek = ['D', 'L', 'Ma', 'Mi', 'J', 'V', 'S'];
 
 function App() {
-
    // Función para obtener los días iniciales con sus respectivos datos
   const getDaysWithDates = (date) => {
     const daysWithDates = [];
@@ -118,7 +114,6 @@ function App() {
     saveLogros(newLogros); 
     saveHabit(newHabits);
   }
-  console.log(logros)
 
   const onDeleteHabit = (key) => {
     const newHabits = [...habits];
@@ -152,32 +147,28 @@ function App() {
   };
 
   // Repetir habitos del dia anterior inicializados en false
-  useEffect(() => {
-    const today = new Date()
-    today.setDate(today.getDate() - 1)
-    const todayFull = today.toLocaleDateString()
-    const newHabits = [...habits]
-    habits.map((habit) => {
-      if (habit.date === todayFull) {
-        newHabits.push({
-          key: habit.id,
-          text: habit.text,
-          jornada: habit.jornada,
-          streak: 0,
-          completed: false,
-          date: todayFull,
-      });
-      }
-    })
-  }, [currentDate]); 
+  // useEffect(() => {
+  //   const today = new Date()
+  //   today.setDate(today.getDate() - 1)
+  //   const newHabits = [...habits]
+  //   habits.map((habit) => {
+  //     newHabits.push({
+  //       key: habit.key,
+  //       text: habit.text,
+  //       jornada: habit.jornada,
+  //       streak: 0,
+  //       completed: false,
+  //       date: selectedDay
+  //     });
+  //   })
+  //   saveHabit(newHabits)
+  // }, [currentDate]); 
 
   // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
   useEffect(() => {     
     const newDaysWithDates = [...daysWithDates]  
-    console.log(logros)
     newDaysWithDates.map( (day) => {
       if (logros.length === 0 ){
-        console.log(logros)  
         day.allCompleted = false
       }
       logros.map(() => {
@@ -203,6 +194,7 @@ function App() {
         <Routes>
           <Route path='/' element={
             <HomePage 
+            setCurrentDate={setCurrentDate}
             logros={logros}
             saveLogros={saveLogros}
             selectDay={selectDay}
@@ -226,9 +218,7 @@ function App() {
             handleNextWeek={handleNextWeek}
           />}/>
 
-          <Route path='/calendar' element={
-            <HabitCalendar 
-          />}/>        
+          <Route path='/calendar' element={<HabitCalendar/>}/>        
 
         </Routes>
       </div>
