@@ -192,7 +192,7 @@ function App() {
 
       <div className='NavigationContainer'>
         <Routes>
-          <Route path='/' element={
+          <Route path='/mustard-habit-project-talentotech' element={
             <HomePage 
             setCurrentDate={setCurrentDate}
             logros={logros}
@@ -218,7 +218,7 @@ function App() {
             handleNextWeek={handleNextWeek}
           />}/>
 
-          <Route path='/calendar' element={<HabitCalendar/>}/>        
+          <Route path='/mustard-habit-project-talentotech/calendar' element={<HabitCalendar/>}/>        
 
         </Routes>
       </div>
