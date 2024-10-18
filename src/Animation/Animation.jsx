@@ -1,6 +1,6 @@
-import './Animacion.css';
+import './Animation.css';
 
-function Animacion () {
+function Animation () {
 
     return (        
         <div className="circle-container">
@@ -10,4 +10,4 @@ function Animacion () {
     )
 }
 
-export { Animacion };
+export { Animation };

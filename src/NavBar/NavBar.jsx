@@ -2,7 +2,7 @@ import './NavBar.css';
 import { FiMoreVertical } from "react-icons/fi";
 import { FiBarChart } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
-import Logo from "./LogoMustardHabit.png";
+import Logo from "../Images/MustardHabitLogo.png";
 import { useNavigate } from 'react-router-dom';
 
 function NavBar () {

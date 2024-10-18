@@ -31,10 +31,10 @@ MustardHabit es una aplicación web desarrollada con **React** para el control d
 - mustard-habit-project-talento/
 - ├── public/
 - ├── src/
-- │   ├── Animacion/                 # Componete de animacion que se usa en el fondo de la aplicacion.
-- │   │   ├──Animacion.css   
-- │   │   ├──Animacion.jsx
-- │   │   ├──ContainerAnimaciones.jsx
+- │   ├── Animation/                 # Componete de animacion que se usa en el fondo de la aplicacion.
+- │   │   ├──Animation.css   
+- │   │   ├──Animation.jsx
+- │   │   ├──ContainerAnimations.jsx
 - │   ├── App/                       # Componente principal de la aplicacion.
 - │   │   ├──App.css   
 - │   │   ├──App.jsx

@@ -21,7 +21,7 @@
     align-items: center;
     width: 100%;
     border-radius: 16px;
-    background-image: url("./fondoIsEditing.png");
+    background-image: url("../Images/IsEditingBackground.png");
     background-position: absolute;
     background-repeat: no-repeat;
     background-size: cover;
