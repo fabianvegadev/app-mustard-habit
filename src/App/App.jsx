@@ -167,21 +167,11 @@ function App() {
   // Valida si las fechas de logros coinciden con las fechas del array de la navbar y cambia el valor de la propiedad allCompleted en el array
   useEffect(() => {     
     const newDaysWithDates = [...daysWithDates]  
-    newDaysWithDates.map( (day) => {
-      if (logros.length === 0 ){
-        day.allCompleted = false
-      }
-      logros.map(() => {
-        const cierto = logros.some( (logro) => logro.date === day.fullDate)
-        if (cierto) {
-          day.allCompleted = true
-          setDaysWithDates(newDaysWithDates)  
-        } else {
-          day.allCompleted = false
-          setDaysWithDates(newDaysWithDates) 
-        }
-      })
-    })
+    newDaysWithDates.forEach((day) => {
+      const cierto = logros.some((logro) => logro.date === day.fullDate);
+      day.allCompleted = cierto ? true : false;
+    });
+    setDaysWithDates(newDaysWithDates)
   }, [logros, habits])    
 
   return (
@@ -192,7 +182,7 @@ function App() {
 
       <div className='NavigationContainer'>
         <Routes>
-          <Route path='/mustard-habit-project-talentotech' element={
+          <Route path='/' element={
             <HomePage 
             setCurrentDate={setCurrentDate}
             logros={logros}
@@ -218,7 +208,7 @@ function App() {
             handleNextWeek={handleNextWeek}
           />}/>
 
-          <Route path='/mustard-habit-project-talentotech/calendar' element={<HabitCalendar/>}/>        
+          <Route path='/calendar' element={<HabitCalendar/>}/>        
 
         </Routes>
       </div>

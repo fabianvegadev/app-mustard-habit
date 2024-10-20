@@ -1,20 +1,14 @@
 import './CreateHabitButton.css';
 
-function CreateHabitButton ({setOpenModal, setCurrentDate}) {
+function CreateHabitButton ({setOpenModal}) {
 
-    const pruebaCurrentDate = () => {
-        const today = new Date()
-        today.setDate(today.getDate() + 1)
-        setCurrentDate(today)
-    }
     
     return (
         <div className="CreateHabitButtonContainer">
             <button 
             className="CreateHabitButton"
-            onClick={(e) => {
+            onClick={() => {
                 setOpenModal(state => !state)
-                pruebaCurrentDate()
             }}            
         >+</button>
         </div>

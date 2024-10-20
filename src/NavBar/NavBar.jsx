@@ -11,13 +11,13 @@ function NavBar () {
 
     return (
         <nav className='NavBar'>            
-                <div className='LogoContainer' onClick={() => navigate('/mustard-habit-project-talentotech')}>
+                <div className='LogoContainer' onClick={() => navigate('/')}>
                     <img src={Logo} alt='Logo' className='Logo'/>
                     <b>MustardHabit</b>                      
                 </div>
 
                 <div className='GraficsContainer'>
-                    <FiBarChart className='GraficsIcon' onClick={ () => navigate('/mustard-habit-project-talentotech/calendar') }/>
+                    <FiBarChart className='GraficsIcon' onClick={ () => navigate('/calendar') }/>
 
                     <FiMoreVertical className='MenuIcon'/>
                     
