@@ -182,7 +182,7 @@ function App() {
 
       <div className='NavigationContainer'>
         <Routes>
-          <Route path='/' element={
+          <Route path='/mustard-habit.app/' element={
             <HomePage 
             setCurrentDate={setCurrentDate}
             logros={logros}
@@ -208,7 +208,7 @@ function App() {
             handleNextWeek={handleNextWeek}
           />}/>
 
-          <Route path='/calendar' element={<HabitCalendar/>}/>        
+          <Route path='/mustard-habit.app/calendar' element={<HabitCalendar/>}/>        
 
         </Routes>
       </div>
