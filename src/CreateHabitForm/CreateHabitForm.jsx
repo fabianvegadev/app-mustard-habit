@@ -22,7 +22,7 @@ function CreateHabitForm() {
 			<label>Escribe tu nuevo hábito</label>
 
 			<textarea
-				placeholder="Correr 30 minutos antes de empezar el día"
+				placeholder="Correr 5 paginas diarias"
 				value={newHabitValue}
 				onChange={(e) => setNewHabitValue(e.target.value)}
 			/>
