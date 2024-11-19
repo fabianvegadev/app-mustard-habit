@@ -4,7 +4,6 @@ import { Layout } from "../Layout";
 import { NavBar } from "../NavBar/NavBar";
 import { HabitCalendar } from "../HabitCalendar/HabitCalendar";
 import { HomePage } from "../HomePage/HomePage";
-import "./App.css";
 
 function App() {
 	return (
