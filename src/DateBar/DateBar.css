@@ -1,101 +1,131 @@
-/* DateBar.css */
 .datebarContainer {
-  background-color: transparent;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 16px 16px 8px 16px;
-  position: relative;
+	background-color: transparent;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 16px 16px 8px 16px;
+	position: relative;
+	width: 100%;
 }
 
 .arrowContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin-bottom: 9px;
-}
-
-.month {
-  background-color: rgba(250,250,250,0.7);
-  border-radius: 4px;
-  padding: 0px 4px 0px 4px;
-  position: absolute;
-  top: 17px;
-  left: 12px;
-}
-
-.year {
-  background-color: rgba(250,250,250,0.7);
-  border-radius: 4px;
-  padding: 0px 4px 0px 4px;
-  position: absolute;
-  top: 17px;
-  right: 12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	margin-bottom: 14px;
+	width: 10%;
 }
 
 .arrowContainer button {
-  background-color: transparent;
-  border: none;
-  color: black;
-  font-size: 30px; /* Tamaño del icono */
-  cursor: pointer;display: flex;
-  align-items: center;
+	width: 32px;
+	height: 32px;
+}
+
+.month {
+	background-color: rgba(250, 250, 250, 0.7);
+	border-radius: 4px;
+	padding: 0px 4px 0px 4px;
+	position: absolute;
+	top: 17px;
+	left: 12px;
+}
+
+.year {
+	background-color: rgba(250, 250, 250, 0.7);
+	border-radius: 4px;
+	padding: 0px 4px 0px 4px;
+	position: absolute;
+	top: 17px;
+	right: 12px;
+}
+
+.arrowContainer button {
+	background-color: transparent;
+	border: none;
+	color: black;
+	font-size: 30px; /* Tamaño del icono */
+	cursor: pointer;
+	display: flex;
+	align-items: center;
 }
 
 .arrowContainer button:hover {
-  color: #d5b143;
-} 
+	color: #d5b143;
+}
 
 .datebarCenterContainer {
-  display: flex;  
-  justify-content: space-around;
-  width: 100%;
-  padding: 0 16px 0 16px;
+	display: flex;
+	justify-content: space-evenly;
+	width: 80%;
+	padding: 0px 4px;
 }
 
 .dayContainer {
-  display: flex;
-  flex-direction: column;  
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	width: 12%;
 }
 
 .datebarButton:hover {
-  color: #d5b143; /* Cambio de color al pasar el ratón */
+	color: #d5b143; /* Cambio de color al pasar el ratón */
 }
 
 .dayContainer button {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(220,220,220,0.5);
-  border-radius: 50%;
-  border-style: solid;
-  border-color: white;
-  border-width: 2px;
-  margin:  12px 4px 4px 4px;
-  min-width: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-weight: bold;
-  position: relative;
+	width: 40px;
+	height: 40px;
+	background-color: rgba(220, 220, 220, 0.5);
+	border-radius: 50%;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	margin: 12px 4px 4px 4px;
+	min-width: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-weight: bold;
+	position: relative;
 }
 
 .dayContainer .selectedDay {
-  background-color: rgba(216, 189, 101, 0.7);
+	background-color: rgba(216, 189, 101, 0.7);
 }
 
 .dayContainer .allCompleted {
-  background-color: rgba(41, 187, 90, 0.658);  
+	background-color: rgba(41, 187, 90, 0.658);
 }
 
 .IconCheck {
-  color: white;
-  border-radius: 50%;
-  background-color: green;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: -4px;
-  right: 0px;
-  transition: 3s;
+	color: white;
+	border-radius: 50%;
+	background-color: green;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: -4px;
+	right: 0px;
+	transition: 3s;
+}
+
+@media (max-width: 600px) {
+	.month,
+	.year,
+	.dayContainer b,
+	.dayContainer button {
+		font-size: 14px;
+	}
+	.dayContainer button {
+		width: 26px;
+		height: 26px;
+		margin-top: 6px;
+	}
+	.arrowContainer {
+		margin-bottom: 6px;
+	}
+	.arrowContainer button {
+		width: 20px;
+		height: 20px;
+	}
 }

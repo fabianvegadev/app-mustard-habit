@@ -41,13 +41,13 @@ function HabitItem(props) {
 		<li className={`habitItem ${completed && "habitItem--completed"}`}>
 			{isEditing ? (
 				<div className="editingItem">
-					<div className="inputsContainer">
-						<textarea
-							type="text"
-							value={editHabitText}
-							onChange={(e) => setEditHabitText(e.target.value)}
-						/>
+					<textarea
+						type="text"
+						value={editHabitText}
+						onChange={(e) => setEditHabitText(e.target.value)}
+					/>
 
+					<div className="rigthContainer">
 						<select
 							value={editHabitTime}
 							onChange={(e) => setEditHabitTime(e.target.value)}
@@ -57,14 +57,14 @@ function HabitItem(props) {
 							<option value="Tarde">Tarde</option>
 							<option value="Noche">Noche</option>
 						</select>
-					</div>
-					<div className="iconsContainer">
-						<button className="iconCheckEdit" onClick={handleEdit}>
-							<FaCheck size={15} />
-						</button>
-						<button className="iconCancelEdit" onClick={handleCancelEdit}>
-							<FaXmark size={19} />
-						</button>
+						<div className="iconsContainer">
+							<button className="iconCheckEdit" onClick={handleEdit}>
+								<FaCheck size={15} />
+							</button>
+							<button className="iconCancelEdit" onClick={handleCancelEdit}>
+								<FaXmark size={19} />
+							</button>
+						</div>
 					</div>
 				</div>
 			) : (
