@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: 'https://fabianvegadev.github.io/mustard-habit.app/'
+  base: 'https://fabianvegadev.github.io/app-mustard-habit'
 })

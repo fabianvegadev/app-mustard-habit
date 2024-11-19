@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-import './HabitList.css';
+import { useContext } from "react";
+import { MustardHabitContext } from "../Context";
+import "./HabitList.css";
 import { HabitItem } from "../HabitItem/HabitItem";
 // const defaultHabits = [
 //   {text: 'Caminar', streak: "5 días consecutivos", completed: false},
@@ -15,32 +17,30 @@ import { HabitItem } from "../HabitItem/HabitItem";
 // localStorage.setItem('Habits_v1', JSON.stringify(defaultHabits));
 // localStorage.removeItem('Habits_V1')
 
+function HabitList() {
+	const context = useContext(MustardHabitContext);
 
+	return (
+		<ul className="HabitList">
+			{context.habits.map(
+				(habit, index) =>
+					habit.date === context.selectedDay && (
+						<HabitItem
+							key={habit.key}
+							text={habit.text}
+							index={index}
+							jornada={habit.jornada}
+							streak={habit.streak}
+							completed={habit.completed}
+							onCompleteHabit={context.onCompleteHabit}
+							onDeleteHabit={context.onDeleteHabit}
+							onEditHabit={context.onEditHabit}
+							setNewHabitValue={context.setNewHabitValue}
+						></HabitItem>
+					)
+			)}
+		</ul>
+	);
+}
 
-function HabitList (props) {
-
-    return (
-        <ul className="HabitList">
-
-            {props.habits.map((habit, index) => 
-            (habit.date === props.selectedDay) &&
-            <HabitItem 
-                key={habit.key} 
-                text={habit.text}
-                index={index}
-                jornada={habit.jornada} 
-                streak={habit.streak} 
-                completed={habit.completed}
-                onCompleteHabit={props.onCompleteHabit}
-                onDeleteHabit={props.onDeleteHabit}
-                onEditHabit={props.onEditHabit}
-                setNewHabitValue={props.setNewHabitValue}
-            ></HabitItem>
-            )}
-            
-        </ul>
-        
-    )
-};
-
-export {HabitList};
+export { HabitList };

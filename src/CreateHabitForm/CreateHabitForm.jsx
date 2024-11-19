@@ -1,59 +1,64 @@
-import './CreateHabitForm.css';
+import { useContext } from "react";
+import { MustardHabitContext } from "../Context";
+import "./CreateHabitForm.css";
 
-function CreateHabitForm (props) {
-    
-    const onSubmit = (e) => {
-        e.preventDefault();
-        props.onAddHabit(props.newHabitValue, props.newHabitJornada);   
-        props.setNewHabitValue('')     
-        props.setNewHabitJornada('')
-        props.setOpenModal(false);
-    }   
+function CreateHabitForm() {
+	const context = useContext(MustardHabitContext);
 
-    const onCancel = () => {
-        props.setOpenModal(false);
-    }
+	const onSubmit = (e) => {
+		e.preventDefault();
+		context.onAddHabit(context.newHabitValue, context.newHabitJornada);
+		context.setNewHabitValue("");
+		context.setNewHabitJornada("");
+		context.setOpenModal(false);
+	};
 
-    const onChange = (e) => {
-        props.setNewHabitValue (e.target.value)
-    }
+	const onCancel = () => {
+		context.setOpenModal(false);
+	};
 
-    return (
-            <form onSubmit={onSubmit}>
+	const onChange = (e) => {
+		context.setNewHabitValue(e.target.value);
+	};
 
-                <label>Escribe tu nuevo hábito</label>
+	return (
+		<form onSubmit={onSubmit}>
+			<label>Escribe tu nuevo hábito</label>
 
-                <textarea 
-                    placeholder="Correr 30 minutos antes de empezar el día"
-                    value={props.newHabitValue}
-                    onChange={onChange}
-                />
+			<textarea
+				placeholder="Correr 30 minutos antes de empezar el día"
+				value={context.newHabitValue}
+				onChange={onChange}
+			/>
 
-                <select 
-                    value={props.newHabitJornada} 
-                    onChange={(e) => props.setNewHabitJornada(e.target.value)}                    
-                    >
-                        <option value="">Jornada</option>
-                        <option value="Mañana">Mañana</option>
-                        <option value="Tarde">Tarde</option>
-                        <option value="Noche">Noche</option>
-                </select>
+			<select
+				value={context.newHabitJornada}
+				onChange={(e) => context.setNewHabitJornada(e.target.value)}
+			>
+				<option value="">Jornada</option>
+				<option value="Mañana">Mañana</option>
+				<option value="Tarde">Tarde</option>
+				<option value="Noche">Noche</option>
+			</select>
 
-                <div className="HabitForm-buttonContainer">
+			<div className="HabitForm-buttonContainer">
+				<button
+					type="button"
+					className="HabitForm-button HabitForm-button--cancel"
+					onClick={onCancel}
+				>
+					Cancelar
+				</button>
 
-                    <button 
-                        type='button'
-                        className="HabitForm-button HabitForm-button--cancel"
-                        onClick={onCancel}
-                    >Cancelar</button >     
-
-                    <button 
-                        type='submit'
-                        className="HabitForm-button HabitForm-button--add"
-                    >Añadir</button>
-                </div>
-            </form>
-    )
+				<button
+					type="submit"
+					className="HabitForm-button HabitForm-button--add"
+				>
+					Añadir
+				</button>
+			</div>
+		</form>
+	);
 }
 
-export {CreateHabitForm};
+export { CreateHabitForm };

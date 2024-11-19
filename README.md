@@ -27,6 +27,6 @@
 
 ---
 
-<p allign="center">Desarrollado con 💻 y ☕ por <a href="https://github.com/fabianvegadev">Fabian Velasquez</a></p>
+<p align="center">Desarrollado con 💻 y ☕ por <a href="https://github.com/fabianvegadev">Fabian Velasquez</a></p>
 
 ---
