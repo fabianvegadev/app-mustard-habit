@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MustardHabitProvider } from "../Context";
+import { Layout } from "../Layout";
 import { NavBar } from "../NavBar/NavBar";
 import { HabitCalendar } from "../HabitCalendar/HabitCalendar";
 import { HomePage } from "../HomePage/HomePage";
@@ -9,11 +10,11 @@ function App() {
 	return (
 		<MustardHabitProvider>
 			<BrowserRouter>
-				<div>
+				<header>
 					<NavBar />
-				</div>
+				</header>
 
-				<div className="NavigationContainer">
+				<Layout>
 					<Routes>
 						<Route path="/app-mustard-habit/" element={<HomePage />} />
 
@@ -22,7 +23,7 @@ function App() {
 							element={<HabitCalendar />}
 						/>
 					</Routes>
-				</div>
+				</Layout>
 			</BrowserRouter>
 		</MustardHabitProvider>
 	);

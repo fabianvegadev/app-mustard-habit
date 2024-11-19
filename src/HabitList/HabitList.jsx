@@ -29,13 +29,9 @@ function HabitList() {
 							key={habit.key}
 							text={habit.text}
 							index={index}
-							jornada={habit.jornada}
+							time={habit.time}
 							streak={habit.streak}
 							completed={habit.completed}
-							onCompleteHabit={context.onCompleteHabit}
-							onDeleteHabit={context.onDeleteHabit}
-							onEditHabit={context.onEditHabit}
-							setNewHabitValue={context.setNewHabitValue}
 						></HabitItem>
 					)
 			)}

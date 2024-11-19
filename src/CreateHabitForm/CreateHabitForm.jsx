@@ -1,24 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MustardHabitContext } from "../Context";
 import "./CreateHabitForm.css";
 
 function CreateHabitForm() {
 	const context = useContext(MustardHabitContext);
+	const [newHabitValue, setNewHabitValue] = useState("");
+	const [newHabitTime, setNewHabitTime] = useState("");
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		context.onAddHabit(context.newHabitValue, context.newHabitJornada);
-		context.setNewHabitValue("");
-		context.setNewHabitJornada("");
+		context.onAddHabit(newHabitValue, newHabitTime);
 		context.setOpenModal(false);
 	};
 
 	const onCancel = () => {
 		context.setOpenModal(false);
-	};
-
-	const onChange = (e) => {
-		context.setNewHabitValue(e.target.value);
 	};
 
 	return (
@@ -27,13 +23,13 @@ function CreateHabitForm() {
 
 			<textarea
 				placeholder="Correr 30 minutos antes de empezar el día"
-				value={context.newHabitValue}
-				onChange={onChange}
+				value={newHabitValue}
+				onChange={(e) => setNewHabitValue(e.target.value)}
 			/>
 
 			<select
-				value={context.newHabitJornada}
-				onChange={(e) => context.setNewHabitJornada(e.target.value)}
+				value={context.newHabitTime}
+				onChange={(e) => setNewHabitTime(e.target.value)}
 			>
 				<option value="">Jornada</option>
 				<option value="Mañana">Mañana</option>

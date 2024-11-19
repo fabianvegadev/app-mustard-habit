@@ -8,36 +8,37 @@ import { GiAlliedStar } from "react-icons/gi";
 import { FaCheck } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
-function HabitItem() {
+function HabitItem(props) {
 	const context = useContext(MustardHabitContext);
+	const { text, index, time, completed } = props;
 	const [isEditing, setIsEditing] = useState(false);
 	const [editHabitText, setEditHabitText] = useState("");
-	const [editHabitJornada, setEditHabitJornada] = useState("");
+	const [editHabitTime, setEditHabitTime] = useState("");
 
 	const handleEdit = () => {
 		const habitTextUp =
 			editHabitText[0].toUpperCase() + editHabitText.substring(1);
 		setEditHabitText(habitTextUp);
 		if (isEditing) {
-			context.onEditHabit(context.index, habitTextUp, editHabitJornada);
+			context.onEditHabit(context.index, habitTextUp, editHabitTime);
 		}
 		setIsEditing(!setIsEditing);
 	};
 
 	const handleCancelEdit = () => {
 		setIsEditing(false);
-		setEditHabitText(context.text);
-		setEditHabitJornada(context.jornada);
+		setEditHabitText(text);
+		setEditHabitTime(time);
 	};
 
 	const openEditing = () => {
 		setIsEditing(!isEditing);
-		setEditHabitText(context.text);
-		setEditHabitJornada(context.jornada);
+		setEditHabitText(text);
+		setEditHabitTime(time);
 	};
 
 	return (
-		<li className={`habitItem ${context.completed && "habitItem--completed"}`}>
+		<li className={`habitItem ${completed && "habitItem--completed"}`}>
 			{isEditing ? (
 				<div className="editingItem">
 					<div className="inputsContainer">
@@ -48,10 +49,10 @@ function HabitItem() {
 						/>
 
 						<select
-							value={editHabitJornada}
-							onChange={(e) => setEditHabitJornada(e.target.value)}
+							value={editHabitTime}
+							onChange={(e) => setEditHabitTime(e.target.value)}
 						>
-							<option value="">Jornada</option>
+							<option value="">Time</option>
 							<option value="Mañana">Mañana</option>
 							<option value="Tarde">Tarde</option>
 							<option value="Noche">Noche</option>
@@ -69,10 +70,8 @@ function HabitItem() {
 			) : (
 				<>
 					<button
-						className={`buttonCheck ${
-							!context.completed && "buttonCheck--incomplete"
-						}`}
-						onClick={() => context.onCompleteHabit(context.index)}
+						className={`buttonCheck ${!completed && "buttonCheck--incomplete"}`}
+						onClick={() => context.onCompleteHabit(index)}
 					>
 						<FiCheck />
 					</button>
@@ -81,8 +80,8 @@ function HabitItem() {
 						id="textHabit"
 						onClick={() => context.onCompleteHabit(context.index)}
 					>
-						{context.text}
-						<small>{context.jornada}</small>
+						{text}
+						<small>{time}</small>
 					</p>
 
 					<button className="buttonEdit" onClick={openEditing}>
@@ -90,15 +89,13 @@ function HabitItem() {
 					</button>
 
 					<button
-						className={`buttonDelete ${
-							context.completed && "buttonDelete--complete"
-						}`}
+						className={`buttonDelete ${completed && "buttonDelete--complete"}`}
 						onClick={() => context.onDeleteHabit(context.index)}
 					>
 						<FiTrash2 />
 					</button>
 
-					{context.completed === true ? (
+					{completed === true ? (
 						<div className="iconStar">
 							<GiAlliedStar size={20} />
 						</div>

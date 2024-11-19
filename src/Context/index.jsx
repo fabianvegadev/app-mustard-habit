@@ -22,6 +22,7 @@ function useLocalStorage(itemName, initianValue) {
 }
 const daysOfWeek = ["D", "L", "Ma", "Mi", "J", "V", "S"];
 
+// eslint-disable-next-line react/prop-types
 const MustardHabitProvider = ({ children }) => {
 	// Función para obtener los días iniciales con sus respectivos datos
 	const getDaysWithDates = (date) => {
@@ -39,11 +40,9 @@ const MustardHabitProvider = ({ children }) => {
 		return daysWithDates;
 	};
 
-	const [habits, saveHabit] = useLocalStorage("habits", []);
+	const [habits, saveHabits] = useLocalStorage("habits", []);
 	const [openModal, setOpenModal] = useState(false);
-	const [newHabitValue, setNewHabitValue] = useState("");
-	const [newHabitJornada, setNewHabitJornada] = useState("");
-	const [logros, saveLogros] = useLocalStorage("logros", []);
+	const [logros, saveLogros] = useLocalStorage("achievements", []);
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [changeWeek, setChangeWeek] = useState(new Date()); // Estado para el movimiento de la datebar
 	const [selectedDay, setSelectedDay] = useState(
@@ -80,18 +79,18 @@ const MustardHabitProvider = ({ children }) => {
 		setDaysWithDates(newDaysWithDates);
 	};
 
-	const onAddHabit = (text, jornada) => {
+	const onAddHabit = (text, time) => {
 		var idHabit = Math.random() * 10;
 		const newHabits = [...habits];
 		const habitText = text[0].toUpperCase() + text.substring(1);
 		newHabits.unshift({
 			key: idHabit,
 			text: habitText,
-			jornada: jornada,
+			time: time,
 			completed: false,
 			date: selectedDay,
 		});
-		saveHabit(newHabits);
+		saveHabits(newHabits);
 	};
 
 	const onCompleteHabit = (index) => {
@@ -113,23 +112,23 @@ const MustardHabitProvider = ({ children }) => {
 			newLogros.splice(indexABorrar, 1);
 		}
 		saveLogros(newLogros);
-		saveHabit(newHabits);
+		saveHabits(newHabits);
 	};
 
 	const onDeleteHabit = (key) => {
 		const newHabits = [...habits];
 		newHabits.splice((newHabits.key = key), 1);
-		saveHabit(newHabits);
+		saveHabits(newHabits);
 	};
 
-	const onEditHabit = (index, editHabitText, editHabitJornada) => {
+	const onEditHabit = (index, editHabitText, editHabittime) => {
 		const editHabits = [...habits];
 		editHabits[index] = {
 			...editHabits[index],
 			text: editHabitText,
-			jornada: editHabitJornada,
+			time: editHabittime,
 		};
-		saveHabit(editHabits);
+		saveHabits(editHabits);
 	};
 
 	// Función para retroceder una semana
@@ -169,10 +168,6 @@ const MustardHabitProvider = ({ children }) => {
 				setSelectedDay,
 				openModal,
 				setOpenModal,
-				newHabitValue,
-				setNewHabitValue,
-				newHabitJornada,
-				setNewHabitJornada,
 				habits,
 				onAddHabit,
 				onCompleteHabit,
